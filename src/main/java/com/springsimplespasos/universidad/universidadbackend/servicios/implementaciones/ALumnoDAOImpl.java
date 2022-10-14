@@ -13,30 +13,10 @@ import java.util.Optional;
 
 
 @Service
-public class ALumnoDAOImpl implements AlumnoDAO {
+public class ALumnoDAOImpl extends GernericoDAOImpl<Persona, PersonaReposity> implements AlumnoDAO {
 
     @Autowired
-    @Qualifier("repositoryAlumnos")
-    private PersonaReposity reposity;
-
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<Persona> findById(Integer id) {
-        return reposity.findById(id);
-    }
-
-    @Override
-    public Persona save(Persona persona) {
-        return null;
-    }
-
-    @Override
-    public Iterable<Persona> findAll() {
-        return null;
-    }
-
-    @Override
-    public void deleteId(Integer id) {
-
+    public ALumnoDAOImpl(@Qualifier("repositoryAlumnos") PersonaReposity repository) {
+        super(repository);
     }
 }

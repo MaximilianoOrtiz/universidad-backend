@@ -1,22 +1,27 @@
 package com.springsimplespasos.universidad.universidadbackend;
 
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno;
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
+import com.springsimplespasos.universidad.universidadbackend.repositorios.CarreraRepository;
 import com.springsimplespasos.universidad.universidadbackend.repositorios.PersonaReposity;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.CarreraDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CarreraComandos implements CommandLineRunner {
-/*
 
     @Autowired
     private CarreraDAO servicio;
-*/
+
     @Autowired
-    private PersonaReposity servicio;
+    private PersonaDAO servicioPersona;
 
     @Override
     public void run(String... args) throws Exception {
@@ -57,11 +62,26 @@ public class CarreraComandos implements CommandLineRunner {
         Persona save = servicio.save(alumno);
         System.out.println(save.toString());
         */
+//
+//        List<Persona> alumnos = (List<Persona>) servicio.findAll();
+//        alumnos.forEach(System.out::println);
 
-        List<Persona> alumnos = (List<Persona>) servicio.findAll();
-        alumnos.forEach(System.out::println);
+        Optional<Carrera> oCarrera = servicio.findById(1);
+        if(oCarrera.isPresent()){
+            Carrera carrera = oCarrera.get();
+            System.out.println(carrera.toString());
+        }
+        else{
+            System.out.println("carrera no encontrada");
+        }
 
+        Optional<Persona> oPersona = servicioPersona.findById(1);
+        if(oPersona.isPresent()){
+            Persona persona = oPersona.get();
+            System.out.println(persona.toString());
+        }
+        else{
+            System.out.println("persona no encontrada");
+        }
     }
-
-
 }

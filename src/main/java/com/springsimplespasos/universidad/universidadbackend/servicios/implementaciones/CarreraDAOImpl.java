@@ -11,32 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class CarreraDAOImpl implements CarreraDAO  {
+public class CarreraDAOImpl extends GernericoDAOImpl<Carrera, CarreraRepository> implements CarreraDAO  {
+
 
     @Autowired
-    private  CarreraRepository repository;
-
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<Carrera> findById(Integer id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    @Transactional
-    public Carrera save(Carrera carrera) {
-        return repository.save(carrera);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Iterable<Carrera> findAll() {
-        return repository.findAll();
-    }
-
-    @Override
-    @Transactional
-    public void deleteId(Integer id) {
-        repository.deleteById(id);
+    public CarreraDAOImpl(CarreraRepository repository) {
+        super(repository);
     }
 }
