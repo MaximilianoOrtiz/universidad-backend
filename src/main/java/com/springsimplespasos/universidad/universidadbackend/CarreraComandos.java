@@ -1,7 +1,5 @@
 package com.springsimplespasos.universidad.universidadbackend;
 
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno;
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Direccion;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.repositorios.PersonaReposity;
 import org.springframework.beans.factory.annotation.Autowired;

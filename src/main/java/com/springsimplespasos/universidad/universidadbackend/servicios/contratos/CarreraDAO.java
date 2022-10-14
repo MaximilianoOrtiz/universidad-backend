@@ -7,12 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface CarreraDAO  {
-
-    Optional<Carrera> findById(Integer id);
-    Carrera save(Carrera carrera);
-    Iterable<Carrera> findAll();
-    void deleteId(Integer id);
+public interface CarreraDAO extends GenericoDAO<Carrera>{
 
 }
 
