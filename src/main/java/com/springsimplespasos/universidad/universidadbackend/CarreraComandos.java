@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class CarreraComandos implements CommandLineRunner {
 /*
@@ -51,12 +53,15 @@ public class CarreraComandos implements CommandLineRunner {
         //Persona alumno1 = personaServices.save(alumno);
         //System.out.println(alumno1.toString());
 
-
-
-        Direccion direccion = new Direccion("Pergamino", "123", "1623", "", "", "Junin");
-        Persona alumno = new Alumno(null,"RAul", "Perez", "11121212", direccion);
+        /*
+        Direccion direccion = new Direccion("Pedriel", "123", "1623", "", "", "Junin");
+        Persona alumno = new Alumno(null,"PAblo", "Perez", "3333333", direccion);
         Persona save = servicio.save(alumno);
         System.out.println(save.toString());
+        */
+
+        List<Persona> alumnos = (List<Persona>) servicio.findAll();
+        alumnos.forEach(System.out::println);
 
     }
 
