@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public class GernericoDAOImpl<E, R extends CrudRepository<E, Integer>> implements GenericoDAO<E>{
 
+    //Declararlo protected y final para qu elas sub clases puedan accederlo y final para que a inyeccion de dependencia sea a traves del constructor
     protected final R repository;
 
     public GernericoDAOImpl(R repository) {
