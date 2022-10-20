@@ -1,6 +1,7 @@
 package com.springsimplespasos.universidad.universidadbackend.repositorios;
 
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

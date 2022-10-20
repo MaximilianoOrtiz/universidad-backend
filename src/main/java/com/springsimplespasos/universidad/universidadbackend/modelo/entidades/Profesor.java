@@ -28,7 +28,6 @@ public class Profesor extends Persona{
     public Profesor() {
     }
 
-
     public Profesor(Integer id, String nombre, String apellido, String dni, Direccion direccion, BigDecimal sueldo) {
         super(id, nombre, apellido, dni, direccion);
         this.sueldo = sueldo;
@@ -42,6 +41,17 @@ public class Profesor extends Persona{
         this.sueldo = sueldo;
     }
 
+    public Set<Carrera> getCarreras() {
+        return carreras;
+    }
+
+    public void setCarreras(Set<Carrera> carreras) {
+        this.carreras = carreras;
+    }
+
+    public void addCarrera(Carrera carrera){
+        carreras.add(carrera);
+    }
     @Override
     public String toString() {
         return  super.toString() +

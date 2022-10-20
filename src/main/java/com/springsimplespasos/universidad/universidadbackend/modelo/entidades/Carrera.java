@@ -110,6 +110,11 @@ public class Carrera implements Serializable {
         this.profesores = profesores;
     }
 
+
+    public void addProfesor(Profesor profesor){
+        profesores.add(profesor);
+    }
+
     @PrePersist
     private void antesDePersistir(){
         this.fechaAlta = LocalDateTime.now();
