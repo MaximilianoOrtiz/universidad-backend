@@ -84,13 +84,13 @@ public class ProfesorCommand implements CommandLineRunner {
         //profesor2.addCarrera(carrera.get());
 
 
-        Iterable<Profesor> listProfesoresByCarrera = ((ProfesorDAO) personaDAO).findProfesoresByCarrera("Ingenieria en Sistemas");
+   /*     Iterable<Profesor> listProfesoresByCarrera = ((ProfesorDAO) personaDAO).findProfesoresByCarrera("Ingenieria en Sistemas");
         listProfesoresByCarrera.forEach(profesor -> System.out.println(profesor.toString()));
 
         System.out.println("Proxima carrera");
 
         Iterable<Profesor> listProfesoresByCarrera1 = ((ProfesorDAO) personaDAO).findProfesoresByCarrera("Ingenieria Industrial");
         listProfesoresByCarrera1.forEach(profesor -> System.out.println(profesor.toString()));
-
+*/
     }
 }
