@@ -36,7 +36,7 @@ public class CarreraDAOImpl extends GernericoDAOImpl<Carrera, CarreraRepository>
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Carrera> findBusacarCarrerasPorNombreYApellido(String nombre, String apellido) {
-        return repository.findBusacarCarrerasPorNombreYApellido(nombre,apellido);
+    public Iterable<Carrera> buscarCarrerasPorProfesorNombreYApellido(String nombre, String apellido) {
+        return repository.buscarCarrerasPorProfesorNombreYApellido(nombre,apellido);
     }
 }

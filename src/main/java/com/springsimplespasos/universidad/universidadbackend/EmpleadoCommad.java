@@ -44,6 +44,7 @@ public class EmpleadoCommad implements CommandLineRunner {
         System.out.println(persona2);
         System.out.println(persona3);
         System.out.println(persona4);*/
+/*
 
         System.out.println("Tipos de empleados ADMINISTRATIVO");
         Iterable<Persona> empleadoByTipoEmpleadoAdministrativo = ((EmpeladoDAO) personaDAO).findEmpleadoByTipoEmpleado(TipoEmpleado.ADMINISTRATIVO);
@@ -55,8 +56,7 @@ public class EmpleadoCommad implements CommandLineRunner {
 
 
 
-
-
+*/
 
     }
 }
