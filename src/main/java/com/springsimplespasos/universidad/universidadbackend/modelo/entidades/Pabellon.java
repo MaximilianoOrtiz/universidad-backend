@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "pabellones")
 public class Pabellon implements Serializable {
@@ -22,6 +23,7 @@ public class Pabellon implements Serializable {
             @AttributeOverride(name = "codogoPostal", column = @Column(name = "codigo_postal")),
             @AttributeOverride(name = "dpto", column = @Column(name = "departamento"))
     })
+
     private Direccion direccion;
     @Column(name = "fecha_alta")
     private LocalDateTime fechaAlta;

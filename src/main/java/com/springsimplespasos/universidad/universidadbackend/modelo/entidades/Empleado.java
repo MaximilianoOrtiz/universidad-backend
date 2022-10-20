@@ -1,7 +1,6 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -9,7 +8,6 @@ import java.math.BigDecimal;
 @Table(name = "empleados")
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Empleado extends Persona{
-
 
     private BigDecimal sueldo;
     @Column(name = "tipo_empleado")

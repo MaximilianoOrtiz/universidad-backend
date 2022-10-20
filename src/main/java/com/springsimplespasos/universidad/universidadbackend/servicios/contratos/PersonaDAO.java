@@ -1,7 +1,6 @@
 package com.springsimplespasos.universidad.universidadbackend.servicios.contratos;
 
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 

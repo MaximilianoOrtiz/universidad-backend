@@ -1,7 +1,6 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.Pizarron;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;

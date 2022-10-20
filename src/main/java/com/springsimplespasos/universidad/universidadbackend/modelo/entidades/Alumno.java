@@ -7,17 +7,25 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Alumno extends Persona{
 
-
     @ManyToOne(
             optional = true,
+            fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
-            },
-            fetch = FetchType.LAZY
+            }
     )
     @JoinColumn(name = "carrera_id")
     private Carrera carrera;
+
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
 
     public Alumno() {
     }

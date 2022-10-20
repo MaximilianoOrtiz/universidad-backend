@@ -4,7 +4,6 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Pe
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-
 import java.util.Optional;
 
 //No genera un bean de esta clase en particular
