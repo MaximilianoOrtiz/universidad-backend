@@ -20,8 +20,8 @@ public class AulaDAOImpl extends GernericoDAOImpl<Aula, AulaRepository> implemen
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Aula> findAulasByPizarronContains(Pizarron pizarron) {
-        return repository.findAulasByPizarronContains(pizarron);
+    public Iterable<Aula> findAulasByPizarron(Pizarron pizarron) {
+        return repository.findAulasByPizarron(pizarron);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class AulaDAOImpl extends GernericoDAOImpl<Aula, AulaRepository> implemen
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Aula> findAulaByNroAulaContains(Integer nroAula) {
-        return repository.findAulaByNroAulaContains(nroAula);
+    public Optional<Aula> findAulaByNroAula(Integer nroAula) {
+        return repository.findAulaByNroAula(nroAula);
     }
 }

@@ -104,12 +104,12 @@ public class CarreraComandos implements CommandLineRunner {
 
         //SE PROBARA LA NUEVA FUNCIONALIDAD DE CARRERADAO
 
-        Iterable<Carrera> carrerasPorprofesor = servicio.buscarCarrerasPorProfesorNombreYApellido("Facu", "Perez");
+      /*  Iterable<Carrera> carrerasPorprofesor = servicio.buscarCarrerasPorProfesorNombreYApellido("Facu", "Perez");
         carrerasPorprofesor.forEach(carrera -> System.out.println(carrera.toString()));
 
 
         Iterable<Carrera> carrerasPorprofesor1 = servicio.buscarCarrerasPorProfesorNombreYApellido("Maxi", "Ortiz");
-        carrerasPorprofesor1.forEach(carrera -> System.out.println(carrera.toString()));
+        carrerasPorprofesor1.forEach(carrera -> System.out.println(carrera.toString()));*/
     }
 
 }

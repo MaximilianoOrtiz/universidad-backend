@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public interface AulaDAO extends GenericoDAO<Aula> {
 
-    Iterable<Aula> findAulasByPizarronContains(Pizarron pizarron);
+    Iterable<Aula> findAulasByPizarron(Pizarron pizarron);
 
     Iterable<Aula> findAulaByPabellonNombre(String nombrePabellon);
 
-    Optional<Aula> findAulaByNroAulaContains(Integer nroAula);
+    Optional<Aula> findAulaByNroAula(Integer nroAula);
 
 }

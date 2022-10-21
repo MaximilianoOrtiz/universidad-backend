@@ -20,7 +20,7 @@ public class Aula implements Serializable {
     @Column(name = "cantidad_pupitres")
     private Integer cantidadPupitres;
     @Column(name = "tipo_pizarra")
-    @Enumerated(EnumType.STRING) // Anotacino que indica que se va a persistir el String del enumerador
+    @Enumerated(EnumType.STRING) // Anotacion que indica que se va a persistir el String del enumerador
     private Pizarron pizarron;
     @Column(name = "fecha_alta")
     private LocalDateTime fechaAlta;
