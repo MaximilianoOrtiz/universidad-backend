@@ -14,6 +14,7 @@ public class PabellonCommand implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+/*
 
         Iterable<Pabellon> florencio_varela = pabellonDAO.findPabellonByDireccionLocalidad("Florencio Varela");
         florencio_varela.forEach(pabellon -> pabellon.getAulas());
@@ -26,7 +27,8 @@ public class PabellonCommand implements CommandLineRunner {
 
         Iterable<Pabellon> pabellon1 = pabellonDAO.findPabellonByNombre("pabellon1");
         pabellon1.forEach(pabellon -> System.out.println(pabellon.toString()));
-
+*/
 
     }
+
 }
