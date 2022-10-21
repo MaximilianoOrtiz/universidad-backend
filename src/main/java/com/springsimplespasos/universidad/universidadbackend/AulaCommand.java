@@ -11,7 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -31,8 +30,10 @@ public class AulaCommand implements CommandLineRunner {
         Aula aula2 = new Aula(16, 3, "25mt2", 15, Pizarron.PIZARRA_TIZA);
         Aula aula3 = new Aula(17, 4, "30mt2", 25, Pizarron.PIZARRA_BLANCA);
 
-        Direccion calle1 = new Direccion("Calle1", "45", null, null, null, null);
+        Direccion calle1 = new Direccion("Calle1", "45", null, null, null, "Florencio Varela");
         Pabellon pabellon1 = new Pabellon(10, 56.0, "pabellon1", calle1);
+
+        //Pabellon save4 = pabellonDAO.save(pabellon1);
 
    /*     aula.setPabellon(pabellon1);
         aula1.setPabellon(pabellon1);
@@ -44,7 +45,7 @@ public class AulaCommand implements CommandLineRunner {
         Aula save2 = aulaDAO.save(aula2);
         Aula save3 = aulaDAO.save(aula3);
 */
-        /*Set<Aula> aulasPabellos1 = new HashSet<Aula>();
+      /*  Set<Aula> aulasPabellos1 = new HashSet<Aula>();
         aulasPabellos1.add(aula);
         aulasPabellos1.add(aula1);
         aulasPabellos1.add(aula2);
@@ -69,14 +70,16 @@ public class AulaCommand implements CommandLineRunner {
 
 
         // Pabellon save9 = pabellonDAO.save(pabellon2);
+/*
 
-       /* Set<Aula> aulasPabellos2 = new HashSet<Aula>();
+        Set<Aula> aulasPabellos2 = new HashSet<Aula>();
         aulasPabellos2.add(aula4);
         aulasPabellos2.add(aula5);
         aulasPabellos2.add(aula6);
         aulasPabellos2.add(aula7);
 
-        Pabellon save9 = pabellonDAO.save(pabellon2);*/
+        Pabellon save9 = pabellonDAO.save(pabellon2);
+*/
 
        /* aula4.setPabellon(pabellon2);
         aula5.setPabellon(pabellon2);
@@ -104,11 +107,11 @@ public class AulaCommand implements CommandLineRunner {
         Iterable<Aula> pabellon11 = aulaDAO.findAulaByPabellonNombre("pabellon2");
         pabellon11.forEach(aula8 -> System.out.println(aula8.toString()));
 */
-        System.out.println("AULA CORRESPONDIENTE A NRO DE AULA");
+      /*  System.out.println("AULA CORRESPONDIENTE A NRO DE AULA");
 
         Optional<Aula> aulaByNroAula = aulaDAO.findAulaByNroAula(3);
         System.out.println(aulaByNroAula.get().toString());
-
+*/
     }
 }
 

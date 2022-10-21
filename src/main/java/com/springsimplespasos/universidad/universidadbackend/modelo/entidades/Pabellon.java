@@ -3,6 +3,7 @@ package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -35,7 +36,6 @@ public class Pabellon implements Serializable {
             fetch = FetchType.LAZY
     )
     private Set<Aula> aulas;
-
 
     public Pabellon() {
     }
@@ -124,6 +124,18 @@ public class Pabellon implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, nombre);
+    }
+
+    @Override
+    public String toString() {
+        return "Pabellon{" +
+                "id=" + id +
+                ", mtr2=" + mtr2 +
+                ", nombre='" + nombre + '\'' +
+                ", direccion=" + direccion +
+                ", fechaAlta=" + fechaAlta +
+                ", fechaUltimaModificacion=" + fechaUltimaModificacion +
+                '}';
     }
 }
 
