@@ -4,6 +4,7 @@ import com.springsimplespasos.universidad.universidadbackend.datos.DatosDummy;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Empleado;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -80,6 +81,5 @@ class PersonaReposityTest {
         assertThat(expected.size()== 2).isTrue();
 
     }
-
 
 }

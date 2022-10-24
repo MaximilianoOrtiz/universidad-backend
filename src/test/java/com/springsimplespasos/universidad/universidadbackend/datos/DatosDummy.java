@@ -9,17 +9,21 @@ import static com.springsimplespasos.universidad.universidadbackend.modelo.entid
 
 public class DatosDummy {
 
-    public static Carrera carrera01(){
-        return new Carrera(null, "Ingenieria en Sistemas", 50, 5);
+    public static Carrera carrera01(boolean conId){
+        Carrera carrera = (conId) ? new Carrera(1, "Ingenieria en Sistemas", 50, 5):
+                new Carrera(null, "Ingenieria en Sistemas", 50, 5);
+        return carrera;
     }
 
-    public static Carrera carrera02(){
+    public static Carrera carrera02() {
         return new Carrera(null, "Licenciatura en Sistemas", 45, 4);
     }
 
 
-    public static Carrera carrera03(){
-        return new Carrera(null, "Ingenieria en Industrial", 60, 5);
+    public static Carrera carrera03(boolean conId){
+        Carrera carrera = (conId) ? new Carrera(3, "Licenciatura en Sistemas", 45, 4):
+                new Carrera(null, "Licenciatura en Sistemas", 45, 4);
+        return carrera;
     }
 
     public static Persona empleado01(){
