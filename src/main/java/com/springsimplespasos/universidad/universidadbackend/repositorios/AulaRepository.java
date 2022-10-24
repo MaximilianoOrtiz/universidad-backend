@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface AulaRepository extends CrudRepository<Aula, Integer> {
 
     Iterable<Aula> findAulasByPizarron(Pizarron pizarron);
-
     Iterable<Aula> findAulaByPabellonNombre(String nombrePabellon);
     Optional<Aula> findAulaByNroAula(Integer nroAula);
 }
