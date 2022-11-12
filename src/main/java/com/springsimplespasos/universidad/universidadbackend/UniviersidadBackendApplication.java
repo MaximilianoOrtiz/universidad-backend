@@ -28,7 +28,6 @@ public class UniviersidadBackendApplication {
 		/*for (String str : beanDefinitionNames ){
 			System.out.println(str);
 		}*/
-
 	}
 /*
 	@Bean

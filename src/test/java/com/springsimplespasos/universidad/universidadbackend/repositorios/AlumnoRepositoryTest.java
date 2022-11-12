@@ -43,7 +43,6 @@ class AlumnoRepositoryTest {
 
         //Then
         assertThat(expected.size() == 3).isTrue();
-
     }
 
     @Test

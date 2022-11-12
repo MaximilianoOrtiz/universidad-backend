@@ -51,10 +51,10 @@ class PersonaReposityTest {
     void buscarPorDni() {
 
         //Given
-        Persona save = profesorRepository.save(profesor01());
+        Persona save = profesorRepository.save(profesor01(false));
 
         //When
-        Optional<Persona> expected = profesorRepository.buscarPorDni(profesor01().getDni());
+        Optional<Persona> expected = profesorRepository.buscarPorDni(profesor01(true).getDni());
 
         //Then
         assertThat(expected.get()).isInstanceOf(Profesor.class);
@@ -79,7 +79,6 @@ class PersonaReposityTest {
         //Then
 
         assertThat(expected.size()== 2).isTrue();
-
     }
 
 }

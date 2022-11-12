@@ -62,20 +62,20 @@ class CarreraDAOImplTest {
     }
 
     @Test
-    void findCarrerasByCantidadAniosAfter() {
+    void findCarrerasByCantidadAnios() {
         //Given
         int cantidad = 4;
-        when(carreraRepository.findCarrerasByCantidadAniosAfter(cantidad))
+        when(carreraRepository.findCarrerasByCantidadAnios(cantidad))
                 .thenReturn(Arrays.asList(carrera01(true),  carrera03(true)));
 
         //When
-        List<Carrera> expected = (List<Carrera>)carreraDAO.findCarrerasByCantidadAniosAfter(cantidad);
+        List<Carrera> expected = (List<Carrera>)carreraDAO.findCarrerasByCantidadAnios(cantidad);
 
         //Then
         assertThat(expected.get(0)).isEqualTo(carrera01(true));
         assertThat(expected.get(1)).isEqualTo(carrera03(true));
 
-        verify(carreraRepository).findCarrerasByCantidadAniosAfter(cantidad);
+        verify(carreraRepository).findCarrerasByCantidadAnios(cantidad);
 
     }
 }

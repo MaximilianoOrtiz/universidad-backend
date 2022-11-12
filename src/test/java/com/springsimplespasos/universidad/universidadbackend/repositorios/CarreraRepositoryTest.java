@@ -21,7 +21,7 @@ class CarreraRepositoryTest {
     @BeforeEach
     void setUp() {
         carreraRepository.save(DatosDummy.carrera01(false));
-        carreraRepository.save(DatosDummy.carrera02());
+        carreraRepository.save(DatosDummy.carrera02(false));
         carreraRepository.save(DatosDummy.carrera03(false));
     }
 
@@ -66,7 +66,7 @@ class CarreraRepositoryTest {
 
     @Test
     @DisplayName("Buscar Carreras mayor a N años")
-    void findCarrerasByCantidadAniosAfter() {
+    void findCarrerasByCantidadAnios() {
 /*
         //given/contexto
         carreraRepository.save(DatosDummy.carrera01());
@@ -75,7 +75,8 @@ class CarreraRepositoryTest {
 */
 
         //when
-        List<Carrera> expected = (List<Carrera>) carreraRepository.findCarrerasByCantidadAniosAfter(4);
+        List<Carrera> expected = (List<Carrera>) carreraRepository.findCarrerasByCantidadAnios(4);
+        expected.forEach(carrera -> System.out.println(carrera.toString()));
 
         //then
         assertThat(expected.size() == 2).isTrue();

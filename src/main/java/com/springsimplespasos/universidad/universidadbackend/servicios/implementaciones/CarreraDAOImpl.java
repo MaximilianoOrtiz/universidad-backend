@@ -30,8 +30,8 @@ public class CarreraDAOImpl extends GernericoDAOImpl<Carrera, CarreraRepository>
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Carrera> findCarrerasByCantidadAniosAfter(Integer cantidadAnios) {
-        return repository.findCarrerasByCantidadAniosAfter(cantidadAnios);
+    public Iterable<Carrera> findCarrerasByCantidadAnios(Integer cantidadAnios) {
+        return repository.findCarrerasByCantidadAnios(cantidadAnios);
     }
 
     @Override
