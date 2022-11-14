@@ -5,6 +5,7 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Em
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,6 +35,7 @@ class PersonaReposityTest {
     private PersonaReposity profesorRepository;
 
     @Test
+    @DisplayName("TEST-01 -- Buscar por nombre y apellido")
     void buscarPorNombreYApellido() {
         //given
         Persona save = empleadoRepository.save(DatosDummy.empleado01());
@@ -42,12 +44,12 @@ class PersonaReposityTest {
         Optional<Persona> expected = empleadoRepository.buscarPorNombreYApellido(DatosDummy.empleado01().getNombre(), DatosDummy.empleado01().getApellido());
 
         //Then
-        
         assertThat(expected.get()).isInstanceOf(Empleado.class);
         assertThat(expected.get()).isEqualTo(save);
     }
 
     @Test
+    @DisplayName("TEST-02 -- Buscar por dni")
     void buscarPorDni() {
 
         //Given
@@ -63,6 +65,7 @@ class PersonaReposityTest {
     }
 
     @Test
+    @DisplayName("TEST-03 -- Buscar persona por apellido")
     void buscarPersonaPorApellido() {
 
         //Given
@@ -72,13 +75,10 @@ class PersonaReposityTest {
                 alumno03()));
 
         //Then
-
         String apellido = "Benitez";
         List<Persona> expected =(List<Persona>)alumnoRepository.buscarPersonaPorApellido(apellido);
 
         //Then
-
         assertThat(expected.size()== 2).isTrue();
     }
-
 }

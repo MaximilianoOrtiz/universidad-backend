@@ -24,7 +24,6 @@ public class DatosDummy {
         return carrera;
     }
 
-
     public static Carrera carrera03(boolean conId){
         Carrera carrera = (conId) ? new Carrera(3, "Ingenieria Industrial", 45, 4):
                 new Carrera(null, "Ingenieria Industrial", 45, 4);
@@ -81,20 +80,20 @@ public class DatosDummy {
     }
 
     public  static Pabellon pabellon01(boolean conId) {
-        Pabellon pabellon = (conId) ? new Pabellon(1, 95.2, "pabellon01", new Direccion()):
-                new Pabellon(null, 95.2, "pabellon01", new Direccion());
+        Pabellon pabellon = (conId) ? new Pabellon(1, 95.2, "pabellon01", new Direccion(null,null,null,null,null, "Florencio Varela")):
+                new Pabellon(null, 95.2, "pabellon01", new Direccion(null,null,null,null,null, "Florencio Varela"));
         return pabellon;
     }
 
     public  static Pabellon pabellon02(boolean conId) {
-        Pabellon pabellon = (conId) ? new Pabellon(2, 95.2, "pabellon02", new Direccion()):
-                new Pabellon(null, 95.2, "pabellon02", null);
+        Pabellon pabellon = (conId) ? new Pabellon(2, 95.2, "pabellon02", new Direccion(null,null,null,null,null, "Florencio Varela")):
+                new Pabellon(null, 95.2, "pabellon02", new Direccion(null,null,null,null,null, "Florencio Varela"));
         return pabellon;
     }
 
     public  static Pabellon pabellon03(boolean conId) {
-        Pabellon pabellon = (conId) ? new Pabellon(3, 95.2, "pabellon03", new Direccion()):
-                new Pabellon(null, 95.2, "pabellon03", null);
+        Pabellon pabellon = (conId) ? new Pabellon(3, 95.2, "pabellon03", new Direccion(null,null,null,null,null, "Berazategui")):
+                new Pabellon(null, 95.2, "pabellon03",  new Direccion(null,null,null,null,null, "Berazategui"));
         return pabellon;
     }
 

@@ -1,14 +1,13 @@
 package com.springsimplespasos.universidad.universidadbackend.repositorios;
 
+import com.springsimplespasos.universidad.universidadbackend.datos.DatosDummy;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.*;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.Pizarron;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 import static com.springsimplespasos.universidad.universidadbackend.datos.DatosDummy.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -51,8 +50,6 @@ class AulaRepositoryTest {
     @DisplayName("buscar aulas por nombre de pabellon")
     void findAulaByPabellonNombre(){
         //Given
-        Iterable<Aula> all = repository.findAll();
-        all.forEach(aula -> System.out.println(aula.toString()));
 
         Iterable<Pabellon> pabellons = pabellonRepository.saveAll(Arrays.asList(pabellon01(true), pabellon02(true), pabellon03(true)));
         pabellons.forEach(pabellon -> System.out.println(pabellon.toString()));
@@ -79,5 +76,22 @@ class AulaRepositoryTest {
 
         //THEN
         assertThat(expected.size() == 2).isTrue();
+    }
+
+    @Test
+    @DisplayName("Buscar Aulas por Numero de aula")
+    void findAulaByNroAula() {
+        //Given
+
+        repository.save(DatosDummy.aula01(true, 1));
+
+        //When
+
+        Optional<Aula> expected = repository.findAulaByNroAula(1);
+
+        //Then
+
+        assertThat(expected.get().getId()).isEqualTo(1);
+
     }
 }
