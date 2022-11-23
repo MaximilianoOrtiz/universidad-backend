@@ -22,10 +22,8 @@ import static org.mockito.Mockito.*;
 
 class AulaDAOImplTest {
 
-    @Autowired
     AulaDAO aulaDAO;
 
-    @Autowired
     AulaRepository repository;
 
     @BeforeEach

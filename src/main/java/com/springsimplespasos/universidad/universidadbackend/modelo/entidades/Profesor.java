@@ -1,5 +1,7 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Set;
@@ -23,6 +25,7 @@ public class Profesor extends Persona{
             joinColumns = @JoinColumn(name = "profesor_id"),
             inverseJoinColumns = @JoinColumn(name = "carrera_id")
     )
+    @JsonIgnoreProperties({"profesores"})
     private Set<Carrera> carreras;
 
     public Profesor() {

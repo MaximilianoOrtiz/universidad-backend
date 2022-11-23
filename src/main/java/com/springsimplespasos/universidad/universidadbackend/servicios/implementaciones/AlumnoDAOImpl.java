@@ -22,4 +22,9 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
     public Iterable<Persona> buscarAlumnoPorNombreCarrera(String nombre) {
         return ((AlumnoRepository)repository).buscarAlumnoPorNombreCarrera(nombre);
     }
+
+    @Override
+    public Iterable<Persona> buscarTodos() {
+        return ((AlumnoRepository)repository).buscarTodos();
+    }
 }

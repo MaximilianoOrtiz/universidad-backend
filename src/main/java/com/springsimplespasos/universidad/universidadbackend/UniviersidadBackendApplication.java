@@ -18,7 +18,6 @@ import java.util.List;
 @SpringBootApplication
 public class UniviersidadBackendApplication {
 /*
-
 	@Autowired
 	private AlumnoDAO servicio;
 */

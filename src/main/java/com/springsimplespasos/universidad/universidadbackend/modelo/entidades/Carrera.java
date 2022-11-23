@@ -1,5 +1,7 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -28,12 +30,19 @@ public class Carrera implements Serializable {
             mappedBy = "carrera",
             fetch = FetchType.LAZY
     )
+    /*
+    * JsonIgnoreProperties  evita que cuando se cree el Json esta propiedad no se tendra en cuenta
+    * {"carrera"} hace alusion al atributo que se encuentra en la clase Alumno
+    *
+    * */
+    @JsonIgnoreProperties({"carrera"})
     private Set<Alumno> alumnos;
 
     @ManyToMany(
             mappedBy = "carreras",
             fetch = FetchType.LAZY
     )
+    @JsonIgnoreProperties({"carreras"})
     private  Set<Profesor> profesores;
 
     public Carrera() {

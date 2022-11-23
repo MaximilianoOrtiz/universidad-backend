@@ -4,9 +4,10 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Pe
 
 public interface AlumnoDAO extends PersonaDAO{
 
-        // Aca solo vamos a tener las operaciones exclusivos de Alumno
-
+    // Aca solo vamos a tener las operaciones exclusivos de Alumno
     Iterable<Persona> buscarAlumnoPorNombreCarrera(String nombre);
+
+    Iterable<Persona> buscarTodos();
 
 }
 

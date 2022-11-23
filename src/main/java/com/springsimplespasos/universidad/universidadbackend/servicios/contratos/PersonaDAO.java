@@ -9,6 +9,4 @@ public interface PersonaDAO extends GenericoDAO<Persona>{
     Optional<Persona> buscarPorNombreYApellido(String nombre, String apellido);
     Optional<Persona> buscarPorDni (String din);
     Iterable<Persona> buscarPersonaPorApellido (String apellido);
-
-
 }

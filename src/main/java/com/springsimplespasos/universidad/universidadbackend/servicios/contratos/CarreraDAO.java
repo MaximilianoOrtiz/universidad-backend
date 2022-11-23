@@ -8,6 +8,5 @@ public interface CarreraDAO extends GenericoDAO<Carrera>{
     Iterable<Carrera> findCarrerasByNombreContainsIgnoresCase(String nombre);
     Iterable<Carrera> findCarrerasByCantidadAnios(Integer cantidadAnios);
     Iterable<Carrera> buscarCarrerasPorProfesorNombreYApellido(String nombre, String apellido);
-
 }
 
