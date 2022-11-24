@@ -14,39 +14,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/alumnos")
 public class AlumnoController extends PersonaController{
-  //  private final PersonaDAO alumnoDAO;
     private final CarreraDAO carreraDAO;
 
     @Autowired
     public AlumnoController(@Qualifier("alumnoDAOImpl") PersonaDAO alumnoDAO, CarreraDAO carreraDAO) {
-        //this.alumnoDAO = alumnoDAO;
         super(alumnoDAO);
         nombreEntidad = "Alumno";
         this.carreraDAO = carreraDAO;
     }
-//
-//    @GetMapping
-//    public List<Persona> obtenerTodos(){
-//        List<Persona> alumnos = (List<Persona>) ((AlumnoDAO)alumnoDAO).buscarTodos();
-//        if(alumnos.isEmpty()){
-//            throw new BadRequestExecption(String.format("No existe alumno"));
-//        }
-//        return alumnos;
-//    }
-//
-//    @GetMapping("/{id}")
-//    public Persona obtenerAlumnoPorId(@PathVariable(required = false) Integer id){
-//        Optional<Persona> oAlumno = alumnoDAO.findById(id);
-//        if (!oAlumno.isPresent()) {
-//            throw new BadRequestExecption(String.format("Alumno con id %d no existe", id));
-//        }
-//        return oAlumno.get();
-//    }
-//
-//    @PostMapping
-//    public Persona altaAlumno(@RequestBody Persona alumno){
-//        return alumnoDAO.save(alumno);
-//    }
 
     @PutMapping("/{id}")
     public  Persona actualizarAlumno(@PathVariable Integer id, @RequestBody Persona alumno){
@@ -62,10 +37,6 @@ public class AlumnoController extends PersonaController{
         return service.save(alumnoUpdate);
     }
 
-//    @DeleteMapping("/{id}")
-//    public void eliminarAlumno (@PathVariable Integer id){
-//        service.deleteId(id);
-//    }
     @PutMapping("/{idAlumno}/carrera/{idCarrera}")
     public Persona  asignarCarreraAlumno(@PathVariable Integer idAlumno,@PathVariable Integer idCarrera){
         Optional<Persona> oAlumno = service.findById(idAlumno);

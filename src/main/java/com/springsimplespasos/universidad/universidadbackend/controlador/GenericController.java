@@ -1,8 +1,11 @@
 package com.springsimplespasos.universidad.universidadbackend.controlador;
 
 import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.AlumnoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.AlumnoDAOImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +22,11 @@ public class GenericController <E,S extends GenericoDAO<E>> {
 
     @GetMapping
     public List<E> obtenerTodos(){
-        List<E> listado = (List<E>) service.findAll();
-        if(listado.isEmpty()){
+        List<E> listado = null;
+        if(nombreEntidad == "Alumno"){
+            listado = (List<E>) ((AlumnoDAO)service).buscarTodos();
+        }
+        if(listado.isEmpty()) {
             throw new BadRequestExecption(String.format("No se han encontrado %ss", nombreEntidad));
         }
         return  listado;
