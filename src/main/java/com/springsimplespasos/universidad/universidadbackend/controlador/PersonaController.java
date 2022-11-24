@@ -4,9 +4,10 @@ import com.springsimplespasos.universidad.universidadbackend.exception.BadReques
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.websocket.server.PathParam;
+import java.util.List;
 import java.util.Optional;
 
 public class PersonaController extends GenericController<Persona, PersonaDAO>{
@@ -28,6 +29,43 @@ public class PersonaController extends GenericController<Persona, PersonaDAO>{
         return oPersona.get();
     }
 
+    @GetMapping("/dni/{dni}")
+    public Persona buscarPorDni (@PathVariable String dni){
+        Optional<Persona> personaEncontrada = service.buscarPorDni(dni);
+        if(!personaEncontrada.isPresent()){
+                throw new BadRequestExecption(String.format("La persona con dni %s no existe", dni));
+        }
+        return personaEncontrada.get();
+    }
 
-
+    @GetMapping("/apellido/{apellido}")
+    public List<Persona> buscarPersonaPorApellido (@PathVariable() String apellido){
+        List<Persona> personasEncontradas = (List<Persona>) service.buscarPersonaPorApellido(apellido);
+        if (personasEncontradas.isEmpty()){
+            throw new BadRequestExecption(String.format("Las personas con apellido %s no existen", apellido));
+        }
+        return personasEncontradas;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

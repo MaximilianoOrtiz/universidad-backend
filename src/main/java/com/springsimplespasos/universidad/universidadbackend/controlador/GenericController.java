@@ -1,6 +1,7 @@
 package com.springsimplespasos.universidad.universidadbackend.controlador;
 
 import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +44,16 @@ public class GenericController <E,S extends GenericoDAO<E>> {
     //altaEntidad(Entidad)
     @PostMapping
     public E altaEntidad(@RequestBody E entidad){
-        return  service.save(entidad);
+        if (entidad.getClass() == Carrera.class )
+        {
+            if (((Carrera)entidad).getCantidadAnios() < 0){
+                throw new BadRequestExecption(String.format("El campo cantidad de años no puede ser negativo"));
+            }
+            if (((Carrera)entidad).getCantidadDeMaterias() < 0){
+                throw new BadRequestExecption(String.format("El campo cantidad de materias no puede ser negativo"));
+            }
+            return  service.save(entidad);
+        }
+        else return  service.save(entidad);
     }
-
 }

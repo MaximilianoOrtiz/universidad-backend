@@ -62,10 +62,10 @@ public class AlumnoController extends PersonaController{
         return service.save(alumnoUpdate);
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminarAlumno (@PathVariable Integer id){
-        service.deleteId(id);
-    }
+//    @DeleteMapping("/{id}")
+//    public void eliminarAlumno (@PathVariable Integer id){
+//        service.deleteId(id);
+//    }
     @PutMapping("/{idAlumno}/carrera/{idCarrera}")
     public Persona  asignarCarreraAlumno(@PathVariable Integer idAlumno,@PathVariable Integer idCarrera){
         Optional<Persona> oAlumno = service.findById(idAlumno);

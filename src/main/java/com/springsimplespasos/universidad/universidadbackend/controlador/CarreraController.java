@@ -49,20 +49,20 @@ public class CarreraController  extends  GenericController<Carrera, CarreraDAO>{
     }
 
     /**
-     * @RequestBody representa en el json un objeto de tipo carrera
      *
+     * @RequestBody representa en el json un objeto de tipo carrera
      */
 
-    @PostMapping
-    public Carrera altaCarrera(@RequestBody Carrera carrera){
-        if (carrera.getCantidadAnios() < 0){
-            throw new BadRequestExecption(String.format("El campo cantidad de años no puede ser negativo"));
-        }
-        if (carrera.getCantidadDeMaterias() < 0){
-            throw new BadRequestExecption(String.format("El campo cantidad de materias no puede ser negativo"));
-        }
-        return service.save(carrera);
-    }
+//    @PostMapping
+//    public Carrera altaCarrera(@RequestBody Carrera carrera){
+//        if (carrera.getCantidadAnios() < 0){
+//            throw new BadRequestExecption(String.format("El campo cantidad de años no puede ser negativo"));
+//        }
+//        if (carrera.getCantidadDeMaterias() < 0){
+//            throw new BadRequestExecption(String.format("El campo cantidad de materias no puede ser negativo"));
+//        }
+//        return service.save(carrera);
+//    }
 
     @PutMapping("/{id}")
     public Carrera actualizarCarrera (@PathVariable Integer id, @RequestBody Carrera carrera){
@@ -77,8 +77,8 @@ public class CarreraController  extends  GenericController<Carrera, CarreraDAO>{
         return service.save(carreraUpdate);
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminarCarrera(@PathVariable Integer id){
-        service.deleteId(id);
-    }
+//    @DeleteMapping("/{id}")
+//    public void eliminarCarrera(@PathVariable Integer id){
+//        service.deleteId(id);
+//    }
 }
