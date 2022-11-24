@@ -10,4 +10,6 @@ public interface ProfesorRepository extends PersonaReposity {
     @Query("select  c.profesores from Carrera c where c.nombre = ?1")
     Iterable<Profesor> findProfesoresByCarrera(String carrera);
 
+    @Query(value = "select p from Profesor p")
+    Iterable<Profesor> buscarTodos();
 }

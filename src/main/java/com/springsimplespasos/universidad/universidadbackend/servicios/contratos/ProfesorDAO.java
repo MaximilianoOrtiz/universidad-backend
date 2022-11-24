@@ -6,4 +6,5 @@ public interface ProfesorDAO extends  PersonaDAO{
 
     Iterable<Profesor> findProfesoresByCarrera(String carrera);
 
+    Iterable<Profesor> buscarTodos();
 }
