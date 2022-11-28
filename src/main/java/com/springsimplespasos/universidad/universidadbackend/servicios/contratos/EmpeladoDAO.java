@@ -7,4 +7,6 @@ public interface EmpeladoDAO extends PersonaDAO{
 
     Iterable<Persona> findEmpleadoByTipoEmpleado(TipoEmpleado tipoEmpleado);
 
+    Iterable<Persona> buscarTodos();
+
 }

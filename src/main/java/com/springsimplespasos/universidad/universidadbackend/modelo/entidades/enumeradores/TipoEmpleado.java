@@ -1,9 +1,9 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores;
 
-public enum TipoEmpleado {
+import org.springframework.cglib.core.Converter;
 
+public enum TipoEmpleado{
     ADMINISTRATIVO,
-    MANTENIMIENTO
-
+    MANTENIMIENTO;
 
 }

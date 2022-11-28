@@ -1,5 +1,6 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado;
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,14 +16,15 @@ public class Empleado extends Persona{
     private TipoEmpleado tipoEmpleado;
 
     @OneToOne(
-            optional = true,
-            cascade = CascadeType.ALL
+        optional = true,
+                cascade = CascadeType.ALL
     )
-    @JoinColumn(
-            name = "pabellon_id",
-            foreignKey = @ForeignKey(name = "FK_PABELLON_ID")
-    )
-    private Pabellon pabellon;
+        @JoinColumn(
+                name = "pabellon_id",
+                foreignKey = @ForeignKey(name = "FK_PABELLON_ID")
+        )
+        @JsonIgnoreProperties("aulas")
+        private Pabellon pabellon;
 
     public Empleado() {
 

@@ -3,6 +3,7 @@ package com.springsimplespasos.universidad.universidadbackend.controlador;
 import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.AlumnoDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,10 @@ public class GenericController <E,S extends GenericoDAO<E>> {
         }
         if(nombreEntidad == "Profesor") {
             listado = (List<E>) ((ProfesorDAO) service).buscarTodos();
+        }
+
+        if(nombreEntidad == "Empleado") {
+            listado = (List<E>) ((EmpeladoDAO)service).buscarTodos();
         }
         else{
             listado = (List<E>) service.findAll();

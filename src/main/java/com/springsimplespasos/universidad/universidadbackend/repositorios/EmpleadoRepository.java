@@ -10,4 +10,7 @@ public interface EmpleadoRepository extends PersonaReposity{
 
     @Query("select e from Empleado e where e.tipoEmpleado = ?1")
     Iterable<Persona> findEmpleadoByTipoEmpleado(TipoEmpleado tipoEmpleado);
+
+    @Query(value = "select e from Empleado e")
+    Iterable<Persona> buscarTodos();
 }

@@ -9,8 +9,6 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;

@@ -23,4 +23,9 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpeladoDAO {
     public Iterable<Persona> findEmpleadoByTipoEmpleado(TipoEmpleado tipoEmpleado) {
         return ((EmpleadoRepository)repository).findEmpleadoByTipoEmpleado(tipoEmpleado);
     }
+
+    @Override
+    public Iterable<Persona> buscarTodos() {
+        return ((EmpleadoRepository)repository).buscarTodos();
+    }
 }
