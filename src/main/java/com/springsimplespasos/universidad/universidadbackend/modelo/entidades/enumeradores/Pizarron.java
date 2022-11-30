@@ -2,5 +2,5 @@ package com.springsimplespasos.universidad.universidadbackend.modelo.entidades.e
 
 public enum Pizarron {
     PIZARRA_TIZA,
-    PIZARRA_BLANCA
+    PIZARRA_BLANCA;
 }

@@ -19,6 +19,7 @@ public class CarreraController  extends  GenericController<Carrera, CarreraDAO>{
     /**
     * @PathVariable mapea el codigo que viene en la url al argumento id
     * */
+/*
     @GetMapping("/{codigo}")
     public Carrera obtenerPorId(@PathVariable(value = "codigo",required = false) Integer id){
         Optional<Carrera> oCarrera = service.findById(id);
@@ -27,6 +28,7 @@ public class CarreraController  extends  GenericController<Carrera, CarreraDAO>{
         }
         return oCarrera.get();
     }
+*/
 
     /**
      *

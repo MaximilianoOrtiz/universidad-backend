@@ -47,7 +47,7 @@ public class GenericController <E,S extends GenericoDAO<E>> {
     public E obtenerPorId(@PathVariable Integer id){
         Optional<E> entidad = service.findById(id);
         if(!entidad.isPresent())
-            throw new BadRequestExecption(String.format(nombreEntidad, " con id %d no encontrado"));
+            throw new BadRequestExecption(String.format("%s con id %d no encontrado", nombreEntidad, id ));
         return entidad.get();
     }
 

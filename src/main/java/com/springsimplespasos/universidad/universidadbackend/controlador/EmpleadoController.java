@@ -5,7 +5,7 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Em
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Pabellon;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado;
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradoresConverter.TipoEmpleadoConverter;
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PabellonDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
@@ -28,19 +28,14 @@ public class EmpleadoController extends PersonaController{
     }
 
     @GetMapping(value = "/tipo/{tipoEmpleado}")
-    public List<Persona> findEmpleadoByTipoEmpleado(@PathVariable(required = false) TipoEmpleado tipoEmpleado){
+    public List<Persona> findEmpleadoByTipoEmpleado(@PathVariable(required = false) String tipoEmpleado){
 
-        TipoEmpleadoConverter tipoEmpleadoConverter = new TipoEmpleadoConverter();
-        if (tipoEmpleadoConverter.convert(String.valueOf(tipoEmpleado)) == null ){
-            throw new BadRequestExecption(String.format("Tipo de empleados incorrecto, %s ", tipoEmpleado));
-        }
-        else{
-            List<Persona> empleadoByTipoEmpleado = (List<Persona>) ((EmpeladoDAO) service).findEmpleadoByTipoEmpleado((tipoEmpleado));
+        TipoEmpleado cTipoEmpleado = EnumeradorConverterGeneric.getEnumFromString(TipoEmpleado.class, tipoEmpleado);
+        List<Persona> empleadoByTipoEmpleado = (List<Persona>) ((EmpeladoDAO) service).findEmpleadoByTipoEmpleado((cTipoEmpleado));
             if (empleadoByTipoEmpleado.isEmpty()){
                 throw new BadRequestExecption(String.format("No existe el tipo de empleado,  ", tipoEmpleado));
             }else
                 return  empleadoByTipoEmpleado;
-        }
     }
 
     @PutMapping("{id}")
