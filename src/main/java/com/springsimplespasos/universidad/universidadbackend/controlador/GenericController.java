@@ -6,9 +6,15 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class GenericController <E,S extends GenericoDAO<E>> {
@@ -20,8 +26,12 @@ public class GenericController <E,S extends GenericoDAO<E>> {
         this.service = service;
     }
 
+    /**
+     * ? nos permite pasar cualquier tipo de dato al ResponseEntity
+     * */
     @GetMapping
-    public List<E> obtenerTodos(){
+    public ResponseEntity<?> obtenerTodos(){
+        Map<String,Object> mensaje = new HashMap<>();
         List<E> listado = null;
         if(nombreEntidad == "Alumno"){
             listado = (List<E>) ((AlumnoDAO)service).buscarTodos();
@@ -29,7 +39,6 @@ public class GenericController <E,S extends GenericoDAO<E>> {
         if(nombreEntidad == "Profesor") {
             listado = (List<E>) ((ProfesorDAO) service).buscarTodos();
         }
-
         if(nombreEntidad == "Empleado") {
             listado = (List<E>) ((EmpeladoDAO)service).buscarTodos();
         }
@@ -37,9 +46,15 @@ public class GenericController <E,S extends GenericoDAO<E>> {
             listado = (List<E>) service.findAll();
         }
         if(listado.isEmpty()) {
-            throw new BadRequestExecption(String.format("No se han encontrado %ss", nombreEntidad));
+            //throw new BadRequestExecption(String.format("No se han encontrado %ss", nombreEntidad));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("No existen %ss", nombreEntidad));
+            return  ResponseEntity.badRequest().body(mensaje);
         }
-        return  listado;
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos", listado);
+
+        return ResponseEntity.ok(mensaje);
     }
 
     //obtenerPorId(id)
@@ -59,17 +74,26 @@ public class GenericController <E,S extends GenericoDAO<E>> {
 
     //altaEntidad(Entidad)
     @PostMapping
-    public E altaEntidad(@RequestBody E entidad){
-        if (entidad.getClass() == Carrera.class )
-        {
-            if (((Carrera)entidad).getCantidadAnios() < 0){
-                throw new BadRequestExecption(String.format("El campo cantidad de años no puede ser negativo"));
-            }
-            if (((Carrera)entidad).getCantidadDeMaterias() < 0){
-                throw new BadRequestExecption(String.format("El campo cantidad de materias no puede ser negativo"));
-            }
-            return  service.save(entidad);
+    public ResponseEntity<?> altaEntidad(@Valid @RequestBody Carrera carrera, BindingResult result){
+//        if (entidad.getClass() == Carrera.class )
+//        {
+//            if (((Carrera)entidad).getCantidadAnios() < 0){
+//                throw new BadRequestExecption(String.format("El campo cantidad de años no puede ser negativo"));
+//            }
+//            if (((Carrera)entidad).getCantidadDeMaterias() < 0){
+//                throw new BadRequestExecption(String.format("El campo cantidad de materias no puede ser negativo"));
+//            }
+//            return  service.save(entidad);
+//        } else
+
+        Map<String, Object> validaciones = new HashMap<>();
+
+        if(result.hasErrors()){
+            result.getFieldErrors()
+                    .forEach(error -> validaciones.put(error.getField(),error.getDefaultMessage())                      );
+            return ResponseEntity.badRequest().body(validaciones);
         }
-        else return  service.save(entidad);
+
+        return  ResponseEntity.ok(service.save((E) carrera));
     }
 }

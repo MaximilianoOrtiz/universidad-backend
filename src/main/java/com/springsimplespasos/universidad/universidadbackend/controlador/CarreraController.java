@@ -3,9 +3,12 @@ package com.springsimplespasos.universidad.universidadbackend.controlador;
 import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.CarreraDAO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -36,16 +39,23 @@ public class CarreraController  extends  GenericController<Carrera, CarreraDAO>{
      */
 
     @PutMapping("/{id}")
-    public Carrera actualizarCarrera (@PathVariable Integer id, @RequestBody Carrera carrera){
+    public ResponseEntity<?> actualizarCarrera (@PathVariable Integer id, @RequestBody Carrera carrera){
+        Map<String,Object> mensaje = new HashMap<>();
         Carrera carreraUpdate = null;
         Optional<Carrera> oCarrera = service.findById(id);
         if(!oCarrera.isPresent()){
-            throw new BadRequestExecption(String.format("La carrera con id %d no existe", id));
+            //throw new BadRequestExecption(String.format("La carrera con id %d no existe", id));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("%s con ID %d no existe", nombreEntidad, id));
+            return ResponseEntity.badRequest().body(mensaje);
         }
         carreraUpdate = oCarrera.get();
         carreraUpdate.setCantidadAnios(carrera.getCantidadAnios());
         carreraUpdate.setCantidadDeMaterias(carrera.getCantidadDeMaterias());
-        return service.save(carreraUpdate);
+
+        mensaje.put("datos",service.save(carreraUpdate));
+        mensaje.put("success", Boolean.TRUE);
+        return ResponseEntity.ok(mensaje);
     }
 
     @GetMapping("/nombre/{nombre}")
