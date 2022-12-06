@@ -1,6 +1,9 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -16,8 +19,10 @@ public class Pabellon implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "metros_cuadrados")
+    @Positive(message = "El valor debe de ser positivo")
     private Double mtr2;
     @Column(name = "nombre_pabellon", unique = true, nullable = false)
+    @Pattern(regexp = "[a-zA-Z ]{2,254}", message = "El nombre no es valido")
     private String nombre;
     @Embedded // Hace referencia a una clase enbebida
     @AttributeOverrides({//        nnombre del atributo en clase           nombre de la db

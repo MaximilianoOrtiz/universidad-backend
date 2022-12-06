@@ -1,13 +1,11 @@
 package com.springsimplespasos.universidad.universidadbackend.controlador;
 
-import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,21 +37,34 @@ public class PersonaController extends GenericController<Persona, PersonaDAO>{
     }
 
     @GetMapping("/dni/{dni}")
-    public Persona buscarPorDni (@PathVariable String dni){
+    public ResponseEntity<?> buscarPorDni (@PathVariable String dni){
+        Map<String, Object> mensaje = new HashMap<>();
         Optional<Persona> personaEncontrada = service.buscarPorDni(dni);
         if(!personaEncontrada.isPresent()){
-                throw new BadRequestExecption(String.format("La persona con dni %s no existe", dni));
+            //throw new BadRequestExecption(String.format("La persona con dni %s no existe", dni));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("La persona con dni %s no existe", dni));
+            return ResponseEntity.badRequest().body(mensaje);
         }
-        return personaEncontrada.get();
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos", personaEncontrada.get());
+        return ResponseEntity.ok(mensaje);
     }
 
     @GetMapping("/apellido/{apellido}")
-    public List<Persona> buscarPersonaPorApellido (@PathVariable() String apellido){
+    public ResponseEntity<?> buscarPersonaPorApellido (@PathVariable() String apellido){
+        Map<String, Object> mensaje = new HashMap<>();
         List<Persona> personasEncontradas = (List<Persona>) service.buscarPersonaPorApellido(apellido);
         if (personasEncontradas.isEmpty()){
-            throw new BadRequestExecption(String.format("Las personas con apellido %s no existen", apellido));
+            //throw new BadRequestExecption(String.format("Las personas con apellido %s no existen", apellido));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("Las personas con apellido %s no existen", apellido));
+            return ResponseEntity.badRequest().body(mensaje);
         }
-        return personasEncontradas;
+
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos", personasEncontradas);
+        return ResponseEntity.ok(mensaje);
     }
 }
 

@@ -3,6 +3,9 @@ package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado;
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 @Entity
@@ -10,6 +13,8 @@ import java.math.BigDecimal;
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Empleado extends Persona{
 
+    @Positive(message = "El valor debe ser positivo")
+    @NotNull(message = "No se permiten valores nulos")
     private BigDecimal sueldo;
     @Column(name = "tipo_empleado")
     @Enumerated(EnumType.STRING)

@@ -1,12 +1,9 @@
 package com.springsimplespasos.universidad.universidadbackend.controlador;
 
-import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.AlumnoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -59,11 +56,18 @@ public class GenericController <E,S extends GenericoDAO<E>> {
 
     //obtenerPorId(id)
     @GetMapping("/{id}")
-    public E obtenerPorId(@PathVariable Integer id){
+    public ResponseEntity<?> obtenerPorId(@PathVariable Integer id){
+        Map<String, Object> mensaje = new HashMap<>();
         Optional<E> entidad = service.findById(id);
-        if(!entidad.isPresent())
-            throw new BadRequestExecption(String.format("%s con id %d no encontrado", nombreEntidad, id ));
-        return entidad.get();
+        if(!entidad.isPresent()){
+            //throw new BadRequestExecption(String.format("%s con id %d no encontrado", nombreEntidad, id ));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mesaje", String.format("%s con id %d no encontrado", nombreEntidad, id ));
+            return  ResponseEntity.badRequest().body(mensaje);
+        }
+        mensaje.put("Success", Boolean.TRUE);
+        mensaje.put("Datos", entidad.get());
+        return ResponseEntity.ok(mensaje);
     }
 
     //borrarEntidadPorId(id)
@@ -73,27 +77,15 @@ public class GenericController <E,S extends GenericoDAO<E>> {
     }
 
     //altaEntidad(Entidad)
+
     @PostMapping
-    public ResponseEntity<?> altaEntidad(@Valid @RequestBody Carrera carrera, BindingResult result){
-//        if (entidad.getClass() == Carrera.class )
-//        {
-//            if (((Carrera)entidad).getCantidadAnios() < 0){
-//                throw new BadRequestExecption(String.format("El campo cantidad de años no puede ser negativo"));
-//            }
-//            if (((Carrera)entidad).getCantidadDeMaterias() < 0){
-//                throw new BadRequestExecption(String.format("El campo cantidad de materias no puede ser negativo"));
-//            }
-//            return  service.save(entidad);
-//        } else
-
+    public ResponseEntity<?> altaEntidad(@Valid @RequestBody E entidad, BindingResult result){
         Map<String, Object> validaciones = new HashMap<>();
-
         if(result.hasErrors()){
             result.getFieldErrors()
                     .forEach(error -> validaciones.put(error.getField(),error.getDefaultMessage())                      );
             return ResponseEntity.badRequest().body(validaciones);
         }
-
-        return  ResponseEntity.ok(service.save((E) carrera));
+        return  ResponseEntity.ok(service.save((entidad)));
     }
 }

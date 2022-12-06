@@ -9,7 +9,7 @@ public class EnumeradorConverterGeneric {
             try {
                 return Enum.valueOf(c, string.toUpperCase());
             } catch(IllegalArgumentException ex) {
-                throw new BadRequestExecption(String.format(" %c incorrecto, %s ", c,string));
+                throw new BadRequestExecption(String.format(" %s incorrecto, %s ",c , string));
             }
         }
         return null;

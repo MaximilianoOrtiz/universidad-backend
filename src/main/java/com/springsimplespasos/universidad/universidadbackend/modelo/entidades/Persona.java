@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -34,17 +38,23 @@ public abstract class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false,length = 60)
+    @Pattern(regexp = "[a-zA-Z ]{2,254}", message = "El nombre no es valido")
+    @NotEmpty(message = "Debe de ingresar un valor")
     private String nombre;
     @Column (nullable = false, length = 60)
+    @Pattern(regexp = "[a-zA-Z ]{2,254}", message = "El nombre no es valido")
+    @NotEmpty(message = "Debe de ingresar un valor")
     private String apellido;
     @Column (nullable = false, length = 10, unique = true)
+    @Size(min = 0, max = 8, message = "Dni invalido")
+    @NotNull(message = "No se aceptan valores nulos")
     private String dni;
     @Column(name = "fecha_alta")
     private LocalDateTime fechaAlta;
     @Column(name = "fecha_modificacion")
     private LocalDateTime fechaUltimaModificacion;
     @Embedded // Hace referencia a una clase enbebida
-    @AttributeOverrides({//        nnombre del atributo en clase           nombre de la db
+    @AttributeOverrides({//         nombre del atributo en clase           nombre de la db
             @AttributeOverride(name = "codogoPostal", column = @Column(name = "codigo_postal")),
             @AttributeOverride(name = "dpto", column = @Column(name = "departamento"))
     })

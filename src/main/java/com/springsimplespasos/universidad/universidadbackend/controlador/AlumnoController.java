@@ -1,6 +1,5 @@
 package com.springsimplespasos.universidad.universidadbackend.controlador;
 
-import com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
@@ -9,8 +8,10 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -28,8 +29,14 @@ public class AlumnoController extends PersonaController{
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @RequestBody Persona alumno){
+    public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @Valid @RequestBody Persona alumno, BindingResult result){
         Map<String,Object> mensaje = new HashMap<>();
+        Map<String, Object> validaciones = new HashMap<>();
+        if (result.hasErrors()){
+            result.getFieldErrors()
+                    .forEach(error -> validaciones.put(error.getField(),error.getDefaultMessage()));
+            return ResponseEntity.badRequest().body(validaciones);
+        }
         Persona alumnoUpdate = null;
         Optional<Persona> oAlumno = service.findById(id);
         if (!oAlumno.isPresent()) {

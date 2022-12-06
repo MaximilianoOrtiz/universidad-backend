@@ -3,6 +3,9 @@ package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import java.beans.XMLEncoder;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -11,6 +14,8 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Profesor extends Persona{
 
+    @Positive(message = "El valor debe ser positivo")
+    @NotNull(message = "No se permiten valores nulos")
     private BigDecimal sueldo;
 
     @ManyToMany(
