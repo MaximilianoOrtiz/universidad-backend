@@ -3,11 +3,8 @@ package com.springsimplespasos.universidad.universidadbackend.controlador.dto;
 
 import com.springsimplespasos.universidad.universidadbackend.modelo.dto.AlumnoDTO;
 import com.springsimplespasos.universidad.universidadbackend.modelo.dto.PersonaDTO;
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno;
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.AlumnoMapper;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +19,6 @@ import java.util.Map;
 @RequestMapping("/alumnos")
 @ConditionalOnProperty(prefix = "app", name = "controller.enable-dto", havingValue = "true")
 public class AlumnoDtoController extends PersonaDtoController{
-
-
-//    @Autowired
-//    @Qualifier("alumnoDAOImpl")
-//    public PersonaDAO personaDAO;
-//@Autowired
-//public AlumnoMapper mapper;
 
     public AlumnoDtoController(@Qualifier("alumnoDAOImpl") PersonaDAO service, AlumnoMapper alumnoMapper) {
         super(service, "Alumno", alumnoMapper);

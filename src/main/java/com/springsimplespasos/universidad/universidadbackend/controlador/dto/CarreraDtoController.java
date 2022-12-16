@@ -7,12 +7,14 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -33,7 +35,6 @@ public class CarreraDtoController extends GenericDtoController<Carrera, CarreraD
     @GetMapping
     public ResponseEntity<?> obtenerCarreras(){
         Map<String, Object> mensaje = new HashMap<>();
-        //List<Carrera> carreras = (List<Carrera>) carreraDAO.findAll();
         List<Carrera> carreras = super.obtenerTodos();
         if (carreras.isEmpty()){
             mensaje.put("success", Boolean.FALSE);
@@ -51,4 +52,90 @@ public class CarreraDtoController extends GenericDtoController<Carrera, CarreraD
         return  ResponseEntity.ok(mensaje);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizarCarrera (@PathVariable Integer id, @Valid @RequestBody CarreraDTO carrera, BindingResult result){
+        Map<String,Object> mensaje = new HashMap<>();
+        System.out.println("Init- ActualizarCarrera");
+
+        if (result.hasErrors()){
+            System.out.println("Init- hasError");
+            mensaje.put("success", Boolean.TRUE);
+            mensaje.put("validaciones", super.obtenerValidaciones(result));
+            return ResponseEntity.badRequest().body(mensaje);
+        }
+        Carrera carreraUpdate = null;
+        Optional<Carrera> oCarrera = service.findById(id);
+        if(!oCarrera.isPresent()){
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("%s con ID %d no existe", nombre_entidad, id));
+            return ResponseEntity.badRequest().body(mensaje);
+        }
+        carreraUpdate = oCarrera.get();
+        carreraUpdate.setCantidadAnios(carrera.getCantidad_anios());
+        carreraUpdate.setCantidadDeMaterias(carrera.getCantidad_materias());
+        Carrera save = service.save(carreraUpdate);
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos",mapperMS.mapCarrera(save));
+        return ResponseEntity.ok(mensaje);
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<?> findCarrerasByNombreContainsIgnoresCase(@PathVariable String nombre){
+        Map<String,Object> mensaje = new HashMap<>();
+        List<Carrera> carreras = (List<Carrera>) service.findCarrerasByNombreContainsIgnoresCase(nombre);
+        if (carreras.isEmpty()){
+            //throw new BadRequestExecption(String.format("La carrera con nombre %s no existe", nombre));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("La carrera con nombre %s no existe", nombre));
+            return ResponseEntity.badRequest().body(mensaje);
+
+        }
+        List<CarreraDTO> carreraDTOS = carreras
+                        .stream()
+                        .map(mapperMS::mapCarrera)
+                        .collect(Collectors.toList());
+
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos",carreraDTOS);
+        return ResponseEntity.ok(mensaje);
+    }
+
+    @GetMapping("/cantidad-anios/{cantidadAnios}")
+    public ResponseEntity<?> findCarrerasByCantidadAnios(@PathVariable Integer cantidadAnios){
+        Map<String,Object> mensaje = new HashMap<>();
+        List<Carrera> carrerasPorAnios = (List<Carrera>) service.findCarrerasByCantidadAnios(cantidadAnios);
+        if (carrerasPorAnios.isEmpty()){
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("La carrera con cantidad de años %d no existe", cantidadAnios));
+            return ResponseEntity.badRequest().body(mensaje);
+        }
+        List<CarreraDTO> carreraDTOS = carrerasPorAnios
+                .stream()
+                .map(mapperMS::mapCarrera)
+                .collect(Collectors.toList());
+
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos",carreraDTOS);
+        return ResponseEntity.ok(mensaje);
+    }
+
+    @GetMapping("/profesor/{nombre}/apellido/{apellido}")
+    public ResponseEntity<?> buscarCarrerasPorProfesorNombreYApellido(@PathVariable String nombre, @PathVariable String apellido){
+        Map<String,Object> mensaje = new HashMap<>();
+        List<Carrera> carrerasPorProfesor = (List<Carrera>) service.buscarCarrerasPorProfesorNombreYApellido(nombre, apellido);
+        if (carrerasPorProfesor.isEmpty()){
+            //throw new BadRequestExecption(String.format("Las carreras con el profesor nombre %s, apellido %s, no existe", nombre, apellido));
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format("Las carreras con el profesor nombre %s, apellido %s, no existe", nombre, apellido));
+            return ResponseEntity.badRequest().body(mensaje);
+        }
+        List<CarreraDTO> carreraDTOS = carrerasPorProfesor
+                .stream()
+                .map(mapperMS::mapCarrera)
+                .collect(Collectors.toList());
+
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("datos",carreraDTOS);
+        return ResponseEntity.ok(mensaje);
+    }
 }
