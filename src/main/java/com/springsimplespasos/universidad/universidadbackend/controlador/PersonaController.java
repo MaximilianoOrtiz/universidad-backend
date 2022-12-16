@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Deprecated
 public class PersonaController extends GenericController<Persona, PersonaDAO>{
 
     public PersonaController(PersonaDAO service) {
