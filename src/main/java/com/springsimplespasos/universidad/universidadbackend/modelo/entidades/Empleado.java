@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Empleado extends Persona{
 
-    @Positive(message = "El valor debe ser positivo")
-    @NotNull(message = "No se permiten valores nulos")
+    //@Positive(message = "El valor debe ser positivo")
+ //  @NotNull(message = "No se permiten valores nulos")
     private BigDecimal sueldo;
     @Column(name = "tipo_empleado")
     @Enumerated(EnumType.STRING)

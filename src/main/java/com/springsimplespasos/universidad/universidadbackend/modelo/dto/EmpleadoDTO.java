@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -15,7 +16,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class EmpleadoDTO extends PersonaDTO{
 
+    @NotNull(message = "debe ingresar un valor")
     private BigDecimal sueldo;
+    @NotNull(message = "debe ingresar un valor")
     private TipoEmpleado tipoEmpleado;
 
     public EmpleadoDTO(Integer id, String nombre, String apellido, String dni, Direccion direccion, BigDecimal sueldo, TipoEmpleado tipoEmpleado) {

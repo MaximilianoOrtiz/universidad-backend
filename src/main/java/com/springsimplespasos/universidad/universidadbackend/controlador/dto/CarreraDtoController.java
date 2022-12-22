@@ -40,7 +40,6 @@ public class CarreraDtoController extends GenericDtoController<Carrera, CarreraD
             mensaje.put("success", Boolean.FALSE);
             mensaje.put("mensaje", String.format("No se encontraron las %ss cargadas", nombre_entidad));
         }
-
         List<CarreraDTO> carreraDTOS = carreras
                 .stream()
                 .map(mapperMS::mapCarrera)

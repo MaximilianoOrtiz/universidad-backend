@@ -7,12 +7,15 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
+@Deprecated
 @RestController
 @RequestMapping("/profesores")
+@ConditionalOnProperty(prefix = "app", name = "controller.enable-dto", havingValue = "false")
 public class ProfesorController extends PersonaController {
 
     private final CarreraDAO carreraDAO;
@@ -45,13 +48,13 @@ public class ProfesorController extends PersonaController {
         if (!oProfesor.isPresent()){
             //throw new BadRequestExecption(String.format("No existe el profesor con id %d", idProfesor));
             mensaje.put("success", Boolean.FALSE);
-            mensaje.put("success", String.format("No existe el profesor con id %d", idProfesor));
+            mensaje.put("mensaje", String.format("No existe el profesor con id %d", idProfesor));
             return ResponseEntity.badRequest().body(mensaje);
         }
         if (!oCarrera.isPresent()){
             //throw new BadRequestExecption(String.format("No existe la carrera con id %d", idCarrera));
             mensaje.put("success", Boolean.FALSE);
-            mensaje.put("success", String.format("No existe la carrera con id %d", idCarrera));
+            mensaje.put("mensaje", String.format("No existe la carrera con id %d", idCarrera));
             return ResponseEntity.badRequest().body(mensaje);
         }
         Persona profesor = oProfesor.get();

@@ -14,8 +14,8 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Profesor extends Persona{
 
-    @Positive(message = "El valor debe ser positivo")
-    @NotNull(message = "No se permiten valores nulos")
+//    @Positive(message = "El valor debe ser positivo")
+//    @NotNull(message = "No se permiten valores nulos")
     private BigDecimal sueldo;
 
     @ManyToMany(
