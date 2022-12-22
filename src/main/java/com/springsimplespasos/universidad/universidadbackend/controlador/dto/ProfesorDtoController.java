@@ -38,25 +38,25 @@ public class ProfesorDtoController extends PersonaDtoController{
         this.carreraDAO = carreraDAO;
     }
 
-    @GetMapping
-    public ResponseEntity<?> obtenerProfesores(){
-        Map<String, Object> mensaje = new HashMap<>();
-        List<Persona> personas = super.obtenerTodos();
-        List<PersonaDTO> dtos = null;
-        if(personas.isEmpty()){
-            mensaje.put("succsess", Boolean.FALSE);
-            mensaje.put("data", String.format("No existen %s", nombre_entidad));
-            return ResponseEntity.badRequest().body(mensaje);
-        }
-        dtos = personas
-                .stream()
-                .map((Persona profesor) -> profesorMapper.mapProfesor((Profesor) profesor))
-                .collect(Collectors.toList());
-
-        mensaje.put("success", Boolean.TRUE);
-        mensaje.put("data", dtos);
-        return ResponseEntity.ok(mensaje);
-    }
+//    @GetMapping
+//    public ResponseEntity<?> obtenerProfesores(){
+//        Map<String, Object> mensaje = new HashMap<>();
+//        List<Persona> personas = super.obtenerTodos();
+//        List<PersonaDTO> dtos = null;
+//        if(personas.isEmpty()){
+//            mensaje.put("succsess", Boolean.FALSE);
+//            mensaje.put("data", String.format("No existen %s", nombre_entidad));
+//            return ResponseEntity.badRequest().body(mensaje);
+//        }
+//        dtos = personas
+//                .stream()
+//                .map((Persona profesor) -> profesorMapper.mapProfesor((Profesor) profesor))
+//                .collect(Collectors.toList());
+//
+//        mensaje.put("success", Boolean.TRUE);
+//        mensaje.put("data", dtos);
+//        return ResponseEntity.ok(mensaje);
+//    }
 
 //    @PostMapping
 //    public ResponseEntity<?> altaPersona(@Valid @RequestBody PersonaDTO personaDTO, BindingResult result){
@@ -74,7 +74,7 @@ public class ProfesorDtoController extends PersonaDtoController{
 //    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarProfesor(@PathVariable Integer id,@Valid @RequestBody Persona profesor, BindingResult result){
+    public ResponseEntity<?> actualizarProfesor(@PathVariable Integer id,@Valid @RequestBody PersonaDTO profesor, BindingResult result){
         Map<String, Object> mensajes = new HashMap<>();
         Persona  updateProfesor = null;
         if(result.hasErrors()){
@@ -92,7 +92,7 @@ public class ProfesorDtoController extends PersonaDtoController{
         updateProfesor.setNombre(profesor.getNombre());
         updateProfesor.setApellido(profesor.getApellido());
         updateProfesor.setDni(profesor.getDni());
-        ((Profesor)updateProfesor).setSueldo(((Profesor)profesor).getSueldo());
+        ((Profesor)updateProfesor).setSueldo(((ProfesorDTO)profesor).getSueldo());
 
         mensajes.put("success", Boolean.TRUE);
         mensajes.put("data", super.altaEntidad(updateProfesor));

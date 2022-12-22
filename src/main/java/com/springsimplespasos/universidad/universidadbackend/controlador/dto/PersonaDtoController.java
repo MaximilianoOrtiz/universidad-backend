@@ -12,7 +12,9 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapst
 import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.EmpleadoMapper;
 import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.ProfesorMapper;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.AlumnoDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -42,47 +44,64 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
 
     @PostMapping
     public ResponseEntity<?> altaPersona(@Valid @RequestBody PersonaDTO personaDTO , BindingResult result) {
-        Persona personaEntidad = null;/* super.altaEntidad(persona);*/
+        Persona personaEntidad = null; /* super.altaEntidad(persona);*/
         PersonaDTO dto = null;
-        //PersonaDTO dto = null;
-        System.out.println("Log - tipo de persona" + personaDTO.getClass());
         Map<String, Object> mensaje = new HashMap<>();
         if(result.hasErrors()){
             mensaje.put("success", Boolean.FALSE);
             mensaje.put("validaciones", super.obtenerValidaciones(result));
             return ResponseEntity.badRequest().body(mensaje);
         }
-
         if (personaDTO instanceof AlumnoDTO) {
             personaEntidad = super.altaEntidad(alumnoMapper.mapAlumno((AlumnoDTO) personaDTO));
             dto = alumnoMapper.mapAlumno((Alumno) personaEntidad);
         } else if (personaDTO instanceof ProfesorDTO) {
-            System.out.println("--------------------------------------------------------------------");
-            System.out.println("Log - entro en Empleado");
-            //aplicamos el mapper de profesor
             personaEntidad = super.altaEntidad(profesorMapper.mapProfesor((ProfesorDTO) personaDTO));
             dto = profesorMapper.mapProfesor((Profesor) personaEntidad);
-            //mensaje.put("data", profesorMapper.mapProfesor((Profesor) personaEntidad));
         } else if (personaDTO instanceof EmpleadoDTO) {
-            System.out.println("--------------------------------------------------------------------");
-            //Empleado empleadoMApeado = empleadoMapper.mapEmpleado((EmpleadoDTO) personaDTO);
-            //System.out.println("EMPLEADO "+empleadoMApeado.toString());
-            //Empleado empleado = (Empleado) super.altaEntidad(empleadoMapper.mapEmpleado((EmpleadoDTO) personaDTO));
-           // System.out.println(empleado.toString());
-           // System.out.println("Log - entro en Empleado");
             personaEntidad = (Empleado) super.altaEntidad(empleadoMapper.mapEmpleado((EmpleadoDTO) personaDTO));
             dto = empleadoMapper.mapEmpleado((Empleado) personaEntidad);
-            //System.out.println("Empleado encontrado EEEEEEEEE");
-            //System.out.println(dto.toString());
         }
         if (dto != null){
             mensaje.put("success", Boolean.TRUE);
             mensaje.put("data", dto);
         }else{
             mensaje.put("success", Boolean.FALSE);
-            mensaje.put("data", dto);
+            mensaje.put("mensaje", String.format("No se a encontrado ninguna persona"));
             return ResponseEntity.badRequest().body(mensaje);
         }
+        return ResponseEntity.ok(mensaje);
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> obtenerPersonas(){
+        Map<String, Object> mensaje = new HashMap<>();
+        List<Persona> personas = super.obtenerTodos();
+        List<PersonaDTO> dtos = null;
+        if(personas.isEmpty()){
+            mensaje.put("succsess", Boolean.FALSE);
+            mensaje.put("data", String.format("No existen %s", nombre_entidad));
+            return ResponseEntity.badRequest().body(mensaje);
+        }
+        if (service instanceof AlumnoDAO){
+            dtos = personas
+                    .stream()
+                    .map((Persona alumno) -> alumnoMapper.mapAlumno((Alumno) alumno))
+                    .collect(Collectors.toList());
+        }
+        else if (service instanceof ProfesorDAO){
+            dtos =personas
+                    .stream()
+                    .map(persona -> profesorMapper.mapProfesor((Profesor) persona))
+                    .collect(Collectors.toList());
+        } else if (service instanceof EmpeladoDAO) {
+            dtos = personas
+                    .stream()
+                    .map(persona -> empleadoMapper.mapEmpleado((Empleado) persona))
+                    .collect(Collectors.toList());
+        }
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("data", dtos);
         return ResponseEntity.ok(mensaje);
     }
 
@@ -95,6 +114,31 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
         }
         return dto;
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerPersonaPorId(@PathVariable  Integer id) {
+        Map<String, Object> mensaje = new HashMap<>();
+        Optional<Persona> oPersona = service.findById(id);
+        PersonaDTO dto = null;
+        if (!oPersona.isPresent()) {
+            mensaje.put("success", Boolean.FALSE);
+            mensaje.put("mensaje", String.format(" Alumno con id %d no encontrado", id));
+            return ResponseEntity.badRequest().body(mensaje);
+        }
+        if (oPersona.get() instanceof Alumno) {
+            dto = alumnoMapper.mapAlumno((Alumno) oPersona.get());
+        }
+        if(oPersona.get() instanceof  Profesor){
+            dto = profesorMapper.mapProfesor((Profesor) oPersona.get());
+        }
+        if (oPersona.get() instanceof  Empleado){
+            dto = empleadoMapper.mapEmpleado((Empleado) oPersona.get());
+        }
+        mensaje.put("success", Boolean.TRUE);
+        mensaje.put("data", dto);
+        return ResponseEntity.ok(mensaje);
+    }
+
 
 //    public List<PersonaDTO> buscarTodos(){
 //        List<Persona> personas = super.obtenerTodos();

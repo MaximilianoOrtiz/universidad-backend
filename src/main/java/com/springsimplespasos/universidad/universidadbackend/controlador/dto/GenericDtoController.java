@@ -1,6 +1,7 @@
 package com.springsimplespasos.universidad.universidadbackend.controlador.dto;
 
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.AlumnoDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,9 @@ public class GenericDtoController <E, S extends GenericoDAO<E>>{
         }else if (service instanceof ProfesorDAO){
            entidades = (List<E>) ((ProfesorDAO)service).buscarTodos();
         }
+        else if (service instanceof EmpeladoDAO){
+            entidades = (List<E>) ((EmpeladoDAO)service).buscarTodos();
+        }
         else
             entidades = (List<E>) service.findAll();
 
@@ -37,9 +41,7 @@ public class GenericDtoController <E, S extends GenericoDAO<E>>{
     }
 
     public E altaEntidad(E entidad){
-        E save = service.save(entidad);
-        System.out.println(save.toString());
-        return save;
+        return service.save(entidad);
     }
 
     @DeleteMapping("/{id}")

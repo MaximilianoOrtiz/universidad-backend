@@ -6,6 +6,7 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Al
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Carrera;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Persona;
 import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.AlumnoMapper;
+import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.CarreraMapperMS;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.CarreraDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,10 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/alumnos")
@@ -28,24 +27,27 @@ public class AlumnoDtoController extends PersonaDtoController{
 
     private final CarreraDAO carreraDAO;
 
-    public AlumnoDtoController(@Qualifier("alumnoDAOImpl") PersonaDAO service, AlumnoMapper alumnoMapper, CarreraDAO carreraDAO) {
+    private final CarreraMapperMS carreraMapperMS;
+
+    public AlumnoDtoController(@Qualifier("alumnoDAOImpl") PersonaDAO service, AlumnoMapper alumnoMapper, CarreraDAO carreraDAO, CarreraMapperMS carreraMapperMS) {
         super(service, "Alumno", null, alumnoMapper , null);
         this.carreraDAO = carreraDAO;
+        this.carreraMapperMS = carreraMapperMS;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> obtenerAlumnoPorId(@PathVariable  Integer id){
-        Map<String, Object> mensaje = new HashMap<>();
-        Optional<Persona> oPersona = service.findById(id);
-        if (!oPersona.isPresent()){
-            mensaje.put("success", Boolean.FALSE);
-            mensaje.put("mensaje", String.format(" Alumno con id %d no encontrado", id ));
-            return ResponseEntity.badRequest().body(mensaje);
-        }
-        mensaje.put("success", Boolean.TRUE);
-        mensaje.put("data", super.buscarPorId(id));
-        return ResponseEntity.ok(mensaje);
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<?> obtenerAlumnoPorId(@PathVariable  Integer id){
+//        Map<String, Object> mensaje = new HashMap<>();
+//        Optional<Persona> oPersona = service.findById(id);
+//        if (!oPersona.isPresent()){
+//            mensaje.put("success", Boolean.FALSE);
+//            mensaje.put("mensaje", String.format(" Alumno con id %d no encontrado", id ));
+//            return ResponseEntity.badRequest().body(mensaje);
+//        }
+//        mensaje.put("success", Boolean.TRUE);
+//        mensaje.put("data", super.buscarPorId(id));
+//        return ResponseEntity.ok(mensaje);
+//    }
 
 //    @PostMapping
 //    public ResponseEntity<?> altaAlumno(@Valid @RequestBody PersonaDTO personaDTO, BindingResult result){
@@ -63,29 +65,29 @@ public class AlumnoDtoController extends PersonaDtoController{
 //        return ResponseEntity.ok(mensaje);
 //    }
 
-    @GetMapping()
-    public ResponseEntity<?> obtenerAlumnos(){
-        Map<String, Object> mensaje = new HashMap<>();
-        //List<Persona> personas = (List<Persona>) ((AlumnoDAO)service).buscarTodos();
-        List<Persona> personas = super.obtenerTodos();
-        List<PersonaDTO> dtos = null;
-        if(personas.isEmpty()){
-            mensaje.put("succsess", Boolean.FALSE);
-            mensaje.put("data", String.format("No existen %s", nombre_entidad));
-            return ResponseEntity.badRequest().body(mensaje);
-        }
-        dtos = personas
-                .stream()
-                .map((Persona alumno) -> alumnoMapper.mapAlumno((Alumno) alumno))
-                .collect(Collectors.toList());
-
-        mensaje.put("success", Boolean.TRUE);
-        mensaje.put("data", dtos);
-        return ResponseEntity.ok(mensaje);
-    }
+//    @GetMapping()
+//    public ResponseEntity<?> obtenerAlumnos(){
+//        Map<String, Object> mensaje = new HashMap<>();
+//        //List<Persona> personas = (List<Persona>) ((AlumnoDAO)service).buscarTodos();
+//        List<Persona> personas = super.obtenerTodos();
+//        List<PersonaDTO> dtos = null;
+//        if(personas.isEmpty()){
+//            mensaje.put("succsess", Boolean.FALSE);
+//            mensaje.put("data", String.format("No existen %s", nombre_entidad));
+//            return ResponseEntity.badRequest().body(mensaje);
+//        }
+//        dtos = personas
+//                .stream()
+//                .map((Persona alumno) -> alumnoMapper.mapAlumno((Alumno) alumno))
+//                .collect(Collectors.toList());
+//
+//        mensaje.put("success", Boolean.TRUE);
+//        mensaje.put("data", dtos);
+//        return ResponseEntity.ok(mensaje);
+//    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @Valid @RequestBody Persona alumno, BindingResult result){
+    public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @Valid @RequestBody PersonaDTO alumno, BindingResult result){
         Map<String,Object> mensaje = new HashMap<>();
         Map<String, Object> validaciones = new HashMap<>();
         if (result.hasErrors()){
