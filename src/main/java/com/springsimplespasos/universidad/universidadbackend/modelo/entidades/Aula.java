@@ -14,7 +14,7 @@ public class Aula implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
-    @Column(name = "numero_aula", nullable = false)
+    @Column(name = "numero_aula", nullable = false, unique = true)
     private Integer nroAula;
     @Column(name = "medidad_mtsxmts")
     private String medidas;

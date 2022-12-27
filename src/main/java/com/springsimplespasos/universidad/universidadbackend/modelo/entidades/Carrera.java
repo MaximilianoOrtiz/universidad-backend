@@ -21,7 +21,7 @@ public class Carrera implements Serializable {
 //    @NotEmpty(message = "Debe de ingresar un valor")
 //    @Size(min = 0,max = 80)
 //    //@Pattern(regexp = "")
-    @Column(nullable = false,unique = true, length =  80)
+    @Column(nullable = false, unique = true, length =  80)
     private String nombre;
     @Column(name = "cantidad_materias")
 //    @Positive(message = "El valor no puede ser negativo")

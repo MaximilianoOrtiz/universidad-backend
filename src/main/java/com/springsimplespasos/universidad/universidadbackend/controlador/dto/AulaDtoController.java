@@ -1,9 +1,12 @@
-package com.springsimplespasos.universidad.universidadbackend.controlador;
+package com.springsimplespasos.universidad.universidadbackend.controlador.dto;
 
+import com.springsimplespasos.universidad.universidadbackend.modelo.dto.AulaDTO;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Aula;
-import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.Pizarron;
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric;
+import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.Pizarron;
+import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.AulaMapperMS;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.AulaDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,20 +17,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-@Deprecated
 @RestController
-@RequestMapping("aulas")
-@ConditionalOnProperty(prefix = "app", name = "controller.enable-dto", havingValue = "false")
-public class AulaController extends GenericController<Aula, AulaDAO> {
+@RequestMapping("/aulas")
+@ConditionalOnProperty(prefix = "app", name = "controller.enable-dto", havingValue = "true")
+public class AulaDtoController extends GenericDtoController<Aula, AulaDAO> {
 
-    public AulaController(AulaDAO service) {
-        super(service);
-        this.nombreEntidad = "Aula";
+    @Autowired
+    private AulaMapperMS aulaMapperMS;
+
+    public AulaDtoController(AulaDAO service){
+        super(service, "Aula");
+    }
+
+    @PostMapping
+    public ResponseEntity<?> altaAula(@Valid @RequestBody AulaDTO aulaDTO, BindingResult result){
+        Map<String, Object> mensajes = new HashMap<>();
+        if (result.hasErrors()){
+            mensajes.put("success", Boolean.FALSE);
+            mensajes.put("validaciones", super.obtenerValidaciones(result));
+        }
+        mensajes.put("success", Boolean.TRUE);
+        mensajes.put("data", aulaMapperMS.mapAula(super.altaEntidad(aulaMapperMS.mapAula(aulaDTO))));
+        return ResponseEntity.ok(mensajes);
     }
 
     @PutMapping("/{idAula}")
-    public ResponseEntity<?> actualizarAula(@PathVariable Integer idAula, @Valid @RequestBody Aula aula, BindingResult result){
+    public ResponseEntity<?> actualizarAula(@PathVariable Integer idAula, @Valid @RequestBody AulaDTO aulaDTO, BindingResult result){
         Map<String, Object> mensajes = new HashMap<>();
         Map<String, Object> validaciones = new HashMap<>();
         if (result.hasErrors()){
@@ -38,19 +55,18 @@ public class AulaController extends GenericController<Aula, AulaDAO> {
         Aula aulaUpdate = null;
         Optional<Aula> oAula = service.findById(idAula);
         if (!oAula.isPresent()){
-            //throw new BadRequestExecption(String.format("No existen aula con el id %d. ", idAula));
             mensajes.put("success", Boolean.FALSE);
             mensajes.put("mensaje", String.format("No existen aula con el id %d. ", idAula));
             return ResponseEntity.badRequest().body(mensajes);
         }
-        System.out.println("LOG - aula es: " + aula.toString());
+//        System.out.println("LOG - aula es: " + aulaDTO.toString());
         aulaUpdate = oAula.get();
-        aulaUpdate.setCantidadPupitres(aula.getCantidadPupitres());
-        aulaUpdate.setMedidas(aula.getMedidas());
-        aulaUpdate.setPabellon(aula.getPabellon());
+        aulaUpdate.setCantidadPupitres(aulaDTO.getCantidadPupitres());
+        aulaUpdate.setMedidas(aulaDTO.getMedidas());
+        //aulaUpdate.setPabellon(aulaDTO.getPabellon());
 
         mensajes.put("success", Boolean.TRUE);
-        mensajes.put("datos", service.save(aulaUpdate) );
+        mensajes.put("datos", aulaMapperMS.mapAula(service.save(aulaUpdate)));
         return ResponseEntity.ok(mensajes);
     }
 
@@ -60,13 +76,13 @@ public class AulaController extends GenericController<Aula, AulaDAO> {
         Pizarron cPizarron = EnumeradorConverterGeneric.getEnumFromString(Pizarron.class, pizarron);
         List<Aula> aulasByPizarron = (List<Aula>) service.findAulasByPizarron(cPizarron);
         if (aulasByPizarron.isEmpty()) {
-            //throw new BadRequestExecption(String.format("No existen aulas con el tipo de pizzarra,  ", pizarron));
             mensajes.put("success", Boolean.FALSE);
             mensajes.put("mensaje", String.format("No existen aulas con el tipo de pizzarra, %s ", pizarron));
             return ResponseEntity.badRequest().body(mensajes);
         }
+        List<AulaDTO> dtos = aulasByPizarron.stream().map(aulaMapperMS::mapAula).collect(Collectors.toList());
         mensajes.put("success", Boolean.TRUE);
-        mensajes.put("datos", aulasByPizarron);
+        mensajes.put("datos", dtos);
         return ResponseEntity.ok(mensajes);
     }
 
@@ -75,13 +91,13 @@ public class AulaController extends GenericController<Aula, AulaDAO> {
         Map<String, Object> mensajes = new HashMap<>();
         List<Aula> aulaByPabellonNombre = (List<Aula>) service.findAulaByPabellonNombre(nombrePabellon);
         if (aulaByPabellonNombre.isEmpty()){
-            //throw new BadRequestExecption(String.format("No existen aulas en el pabellon, %s   ", nombrePabellon));
             mensajes.put("success", Boolean.FALSE);
             mensajes.put("mensaje",String.format("No existen aulas en el pabellon, %s   ", nombrePabellon));
             return ResponseEntity.badRequest().body(mensajes);
         }
+        List<AulaDTO> dtos = aulaByPabellonNombre.stream().map(aulaMapperMS::mapAula).collect(Collectors.toList());
         mensajes.put("success", Boolean.TRUE);
-        mensajes.put("datos", aulaByPabellonNombre);
+        mensajes.put("datos", dtos);
         return ResponseEntity.ok(mensajes);
     }
 
@@ -90,13 +106,12 @@ public class AulaController extends GenericController<Aula, AulaDAO> {
         Map<String, Object> mensajes = new HashMap<>();
         Optional<Aula> aulaByNroAula = service.findAulaByNroAula(nroAula);
         if (!aulaByNroAula.isPresent()){
-            //throw new BadRequestExecption(String.format("No existen aulas con el nro de Aula: %s,  ", nroAula));
             mensajes.put("success", Boolean.FALSE);
             mensajes.put("mensaje",String.format("No existen aulas con el nro de Aula: %s,  ", nroAula));
             return ResponseEntity.badRequest().body(mensajes);
         }
         mensajes.put("success", Boolean.TRUE);
-        mensajes.put("datos", aulaByNroAula);
+        mensajes.put("datos", aulaMapperMS.mapAula(aulaByNroAula.get()));
         return ResponseEntity.ok(mensajes);
     }
 }

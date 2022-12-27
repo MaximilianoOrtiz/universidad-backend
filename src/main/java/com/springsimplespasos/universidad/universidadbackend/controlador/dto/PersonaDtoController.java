@@ -105,15 +105,21 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
         return ResponseEntity.ok(mensaje);
     }
 
-
-    public PersonaDTO buscarPorId(Integer id){
-        Optional<Persona> personaEntidad = super.obtenerPorId(id);
-        PersonaDTO dto = null;
-        if (personaEntidad.get() instanceof Alumno){
-            dto = alumnoMapper.mapAlumno((Alumno)personaEntidad.get());
-        }
-        return dto;
-    }
+//    @GetMapping("/{id}")
+//    public PersonaDTO buscarPorId(@PathVariable Integer id){
+//        Optional<Persona> personaEntidad = super.obtenerPorId(id);
+//        PersonaDTO dto = null;
+//        if (personaEntidad.get() instanceof Alumno){
+//            dto = alumnoMapper.mapAlumno((Alumno)personaEntidad.get());
+//        }
+//        if(personaEntidad.get() instanceof  Profesor){
+//        dto = profesorMapper.mapProfesor((Profesor) personaEntidad.get());
+//        }
+//        if (personaEntidad.get() instanceof  Empleado){
+//        dto = empleadoMapper.mapEmpleado((Empleado) personaEntidad.get());
+//        }
+//        return dto;
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> obtenerPersonaPorId(@PathVariable  Integer id) {

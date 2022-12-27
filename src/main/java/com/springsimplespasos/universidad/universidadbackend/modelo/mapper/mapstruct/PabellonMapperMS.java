@@ -18,4 +18,15 @@ public interface PabellonMapperMS {
     })
     PabellonDTO mapPabellon(Pabellon pabellon);
 
+
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "mtr2", target = "mtr2"),
+//            @Mapping(source = "nombre", target = "nombre"),
+//            @Mapping(source = "direccion", target = "direccion")
+//    })
+    Pabellon mapPabellon(PabellonDTO pabellonDTO);
+
+
+
 }
