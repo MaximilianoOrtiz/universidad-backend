@@ -1,17 +1,27 @@
 package com.springsimplespasos.universidad.universidadbackend.modelo.entidades;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 // No es una entidad, si no, una clase embebida dentro de otra. al momento de cargar busca las entidades no tiene en cuenta las que esten anotadad con @Embeddable
 @Embeddable
+@ApiModel(description = "Direccion", value = "Direccion", reference = "Direccion")
 public class Direccion implements Serializable {
 
+    @ApiModelProperty(name ="calle", example = "Calle falsa")
     private String calle;
+    @ApiModelProperty(name ="Altura", example = "448")
     private String numero;
+    @ApiModelProperty(name ="Codigo Postal", example = "1888")
     private String codigoPostal;
+    @ApiModelProperty(name ="Departamento", example = "10A")
     private String departamento;
+    @ApiModelProperty(name ="Piso del departamento", example = "10")
     private String piso;
+    @ApiModelProperty(name ="Localidad", example = "FLorencio Varela")
     private String localidad;
 
     public Direccion() {

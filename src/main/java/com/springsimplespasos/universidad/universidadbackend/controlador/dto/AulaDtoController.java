@@ -56,7 +56,7 @@ public class AulaDtoController extends GenericDtoController<Aula, AulaDAO> {
             @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
     })
     @GetMapping("/por-pabellon/{nombrePabellon}")
-    public ResponseEntity<?> findAulaByPabellonNombre(@PathVariable @ApiParam(value = "Nombre del pabellon") String nombrePabellon){
+    public ResponseEntity<?> findAulaByPabellonNombre(@PathVariable @ApiParam(value = "Nombre del pabellon", example = "pabellon1") String nombrePabellon){
         Map<String, Object> mensajes = new HashMap<>();
         List<Aula> aulaByPabellonNombre = (List<Aula>) service.findAulaByPabellonNombre(nombrePabellon);
         if (aulaByPabellonNombre.isEmpty()){
@@ -107,7 +107,7 @@ public class AulaDtoController extends GenericDtoController<Aula, AulaDAO> {
             @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
     })
     @GetMapping(value = ("/pizarron/{pizarron}"))
-    public ResponseEntity<?> findAulasByPizarron(@PathVariable @ApiParam( name = "pizarron",value = "Tipo de Pizzarron",required = true) String pizarron) {
+    public ResponseEntity<?> findAulasByPizarron(@PathVariable @ApiParam( name = "pizarron",value = "Tipo de Pizzarron",required = true, example = "PIZARRA_TIZA o PIZARRA_BLANCA") String pizarron) {
         log.info(pizarron);
         Map<String, Object> mensajes = new HashMap<>();
         Pizarron cPizarron = EnumeradorConverterGeneric.getEnumFromString(Pizarron.class, pizarron);
