@@ -1,0 +1,373 @@
+2023-01-04 11:07:16,842 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2023-01-04 11:07:16,882 INFO org.springframework.boot.StartupInfoLogger [main] Starting UniviersidadBackendApplication using Java 1.8.0_332 on DESKTOP-3RTNGS2 with PID 5584 (C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend\target\classes started by Besysoft in C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend)
+2023-01-04 11:07:16,885 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-04 11:07:20,285 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-04 11:07:20,580 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 269 ms. Found 6 JPA repository interfaces.
+2023-01-04 11:07:22,889 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8083 (http)
+2023-01-04 11:07:22,927 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:07:22,929 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-04 11:07:22,929 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-01-04 11:07:23,276 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-04 11:07:23,280 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 6156 ms
+2023-01-04 11:07:23,770 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-04 11:07:23,920 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.11.Final
+2023-01-04 11:07:24,466 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-04 11:07:24,805 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-04 11:07:26,773 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-04 11:07:26,920 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-01-04 11:07:30,866 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-04 11:07:30,901 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:07:33,822 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-04 11:07:34,983 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:07:35,041 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8083 (http) with context path '/api/v2/universidad'
+2023-01-04 11:07:36,398 INFO org.springframework.boot.StartupInfoLogger [main] Started UniviersidadBackendApplication in 20.461 seconds (JVM running for 23.747)
+2023-01-04 11:08:41,407 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-04 11:08:41,408 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-01-04 11:08:41,411 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Completed initialization in 2 ms
+2023-01-04 11:09:52,151 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-6] Optional[Persona{id=30, nombre='Miguel', apellido='Lopez', dni='38950485', direccion=Direccion{calle='Pergamino', numero='1234', codigoPostal='null', departamento='null', piso='null', localidad='null'}, fechaAlta=2022-12-16T12:08:49.326, fechaUltimaModificacion=2022-12-19T15:40:27.933}Alumno{}]
+2023-01-04 11:09:52,151 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-6] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno
+2023-01-04 11:10:05,764 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] fu
+2023-01-04 11:10:05,952 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] CANTIDAD DE PERSONAS ENCONTRADAS: 20
+2023-01-04 11:10:05,952 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] Is Empty: false
+2023-01-04 11:10:05,953 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.AlumnoDAOImpl$$EnhancerBySpringCGLIB$$cd6501a5
+2023-01-04 11:10:05,953 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] entro en Alumno
+2023-01-04 11:10:26,847 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] Optional[Persona{id=82, nombre='Michy', apellido='fu', dni='12345678', direccion=null, fechaAlta=2022-12-22T10:40:11.748, fechaUltimaModificacion=null}Alumno{}]
+2023-01-04 11:10:26,848 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno
+2023-01-04 11:10:42,188 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-8] Moreno
+2023-01-04 11:10:42,201 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-8] CANTIDAD DE PERSONAS ENCONTRADAS: 10
+2023-01-04 11:10:42,201 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-8] Is Empty: false
+2023-01-04 11:10:42,202 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-8] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.AlumnoDAOImpl$$EnhancerBySpringCGLIB$$cd6501a5
+2023-01-04 11:10:42,202 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-8] entro en Alumno
+2023-01-04 11:11:02,167 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] Optional[Persona{id=60, nombre='Santi', apellido='Moreno', dni='968899', direccion=null, fechaAlta=2022-12-21T15:38:57.489, fechaUltimaModificacion=null}Alumno{}]
+2023-01-04 11:11:02,168 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno
+2023-01-04 11:11:31,248 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] Moreno
+2023-01-04 11:11:31,282 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] CANTIDAD DE PERSONAS ENCONTRADAS: 10
+2023-01-04 11:11:31,282 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] Is Empty: false
+2023-01-04 11:11:31,283 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl$$EnhancerBySpringCGLIB$$d598e690
+2023-01-04 11:11:31,284 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] entro en Empleado
+2023-01-04 11:11:53,167 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] fu
+2023-01-04 11:11:53,177 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] CANTIDAD DE PERSONAS ENCONTRADAS: 20
+2023-01-04 11:11:53,178 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] Is Empty: false
+2023-01-04 11:11:53,178 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl$$EnhancerBySpringCGLIB$$d598e690
+2023-01-04 11:11:53,179 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] entro en Empleado
+2023-01-04 11:12:01,757 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] Moreno
+2023-01-04 11:12:01,766 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] CANTIDAD DE PERSONAS ENCONTRADAS: 10
+2023-01-04 11:12:01,766 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] Is Empty: false
+2023-01-04 11:12:01,767 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl$$EnhancerBySpringCGLIB$$d598e690
+2023-01-04 11:12:01,767 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] entro en Empleado
+2023-01-04 11:12:12,493 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] Moreno
+2023-01-04 11:12:12,517 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] CANTIDAD DE PERSONAS ENCONTRADAS: 10
+2023-01-04 11:12:12,518 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] Is Empty: false
+2023-01-04 11:12:12,518 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl$$EnhancerBySpringCGLIB$$d598e690
+2023-01-04 11:12:12,519 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] entro en Empleado
+2023-01-04 11:13:52,062 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] Rojas
+2023-01-04 11:13:52,070 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] CANTIDAD DE PERSONAS ENCONTRADAS: 2
+2023-01-04 11:13:52,070 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] Is Empty: false
+2023-01-04 11:13:52,071 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl$$EnhancerBySpringCGLIB$$d598e690
+2023-01-04 11:13:52,071 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] entro en Empleado
+2023-01-04 11:14:11,157 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] Rojas
+2023-01-04 11:14:11,174 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] CANTIDAD DE PERSONAS ENCONTRADAS: 2
+2023-01-04 11:14:11,176 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] Is Empty: false
+2023-01-04 11:14:11,178 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.AlumnoDAOImpl$$EnhancerBySpringCGLIB$$cd6501a5
+2023-01-04 11:14:11,178 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-7] entro en Alumno
+2023-01-04 11:15:21,299 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] Martin
+2023-01-04 11:15:21,304 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] CANTIDAD DE PERSONAS ENCONTRADAS: 1
+2023-01-04 11:15:21,304 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] Is Empty: false
+2023-01-04 11:15:21,305 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl$$EnhancerBySpringCGLIB$$d598e690
+2023-01-04 11:15:21,305 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-9] entro en Empleado
+2023-01-04 11:15:46,984 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-10] INIT - getEnumFromString
+2023-01-04 11:15:46,987 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-10] pizzarra: ADMINISTRATIVO
+2023-01-04 11:15:46,988 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-10] Class: class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado
+2023-01-04 11:15:57,322 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-1] INIT - getEnumFromString
+2023-01-04 11:15:57,323 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-1] pizzarra: ADMINISTRATIV
+2023-01-04 11:15:57,323 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-1] Class: class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado
+2023-01-04 11:15:57,330 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-1] Servlet.service() for servlet [dispatcherServlet] in context with path [/api/v2/universidad] threw exception [Request processing failed; nested exception is com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption:  class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado incorrecto, ADMINISTRATIV ] with root cause
+com.springsimplespasos.universidad.universidadbackend.exception.BadRequestExecption:  class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado incorrecto, ADMINISTRATIV 
+	at com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric.getEnumFromString(EnumeradorConverterGeneric.java:17)
+	at com.springsimplespasos.universidad.universidadbackend.controlador.dto.EmpleadoDtoController.findEmpleadoByTipoEmpleado(EmpleadoDtoController.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+2023-01-04 11:16:07,913 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-2] INIT - getEnumFromString
+2023-01-04 11:16:07,914 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-2] pizzarra: ADMINISTRATIVO
+2023-01-04 11:16:07,915 INFO com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.EnumeradorConverterGeneric [http-nio-8083-exec-2] Class: class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.TipoEmpleado
+2023-01-04 11:17:48,705 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-6] Servlet.service() for servlet [dispatcherServlet] in context with path [/api/v2/universidad] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController.buscarPorDni(PersonaDtoController.java:228)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+2023-01-04 11:28:30,864 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:28:30,871 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-04 11:28:30,888 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-04 11:28:44,650 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2023-01-04 11:28:44,681 INFO org.springframework.boot.StartupInfoLogger [main] Starting UniviersidadBackendApplication using Java 1.8.0_332 on DESKTOP-3RTNGS2 with PID 1172 (C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend\target\classes started by Besysoft in C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend)
+2023-01-04 11:28:44,684 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-04 11:28:47,719 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-04 11:28:47,980 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 231 ms. Found 6 JPA repository interfaces.
+2023-01-04 11:28:52,367 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8083 (http)
+2023-01-04 11:28:52,416 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:28:52,418 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-04 11:28:52,420 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-01-04 11:28:52,939 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-04 11:28:52,940 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 8073 ms
+2023-01-04 11:28:53,685 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-04 11:28:54,023 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.11.Final
+2023-01-04 11:28:54,814 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-04 11:28:55,275 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-04 11:28:55,744 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-04 11:28:55,838 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-01-04 11:28:58,741 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-04 11:28:58,758 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:29:02,391 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-04 11:29:05,586 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:29:05,646 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8083 (http) with context path '/api/v2/universidad'
+2023-01-04 11:29:07,387 INFO org.springframework.boot.StartupInfoLogger [main] Started UniviersidadBackendApplication in 23.726 seconds (JVM running for 25.533)
+2023-01-04 11:33:29,888 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-04 11:33:29,889 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-01-04 11:33:29,892 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Completed initialization in 2 ms
+2023-01-04 11:33:57,618 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8083-exec-8] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Could not resolve subtype of [simple type, class com.springsimplespasos.universidad.universidadbackend.modelo.dto.PersonaDTO]: missing type id property 'tipo'; nested exception is com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class com.springsimplespasos.universidad.universidadbackend.modelo.dto.PersonaDTO]: missing type id property 'tipo'<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 14, column: 1]]
+2023-01-04 11:35:32,185 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] Optional[Persona{id=116, nombre='string', apellido='string', dni='68952535', direccion=Direccion{calle='string', numero='string', codigoPostal='string', departamento='string', piso='string', localidad='string'}, fechaAlta=2023-01-04T11:35:18.060, fechaUltimaModificacion=null}	Profesor{sueldo=95000.00}]
+2023-01-04 11:35:32,186 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor
+2023-01-04 11:35:38,064 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-4] Optional.empty
+2023-01-04 11:35:46,171 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-5] Optional.empty
+2023-01-04 11:35:51,740 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-6] Optional[Persona{id=116, nombre='string', apellido='string', dni='68952535', direccion=Direccion{calle='string', numero='string', codigoPostal='string', departamento='string', piso='string', localidad='string'}, fechaAlta=2023-01-04T11:35:18.060, fechaUltimaModificacion=null}	Profesor{sueldo=95000.00}]
+2023-01-04 11:35:51,742 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-6] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor
+2023-01-04 11:36:08,263 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8083-exec-7] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Could not resolve subtype of [simple type, class com.springsimplespasos.universidad.universidadbackend.modelo.dto.PersonaDTO]: missing type id property 'tipo'; nested exception is com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class com.springsimplespasos.universidad.universidadbackend.modelo.dto.PersonaDTO]: missing type id property 'tipo'<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 14, column: 1]]
+2023-01-04 11:46:01,209 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:46:01,214 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-04 11:46:01,230 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-04 11:46:14,337 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2023-01-04 11:46:14,372 INFO org.springframework.boot.StartupInfoLogger [main] Starting UniviersidadBackendApplication using Java 1.8.0_332 on DESKTOP-3RTNGS2 with PID 14296 (C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend\target\classes started by Besysoft in C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend)
+2023-01-04 11:46:14,375 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-04 11:46:17,904 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-04 11:46:18,258 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 323 ms. Found 6 JPA repository interfaces.
+2023-01-04 11:46:20,470 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8083 (http)
+2023-01-04 11:46:20,506 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:46:20,510 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-04 11:46:20,512 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-01-04 11:46:20,865 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-04 11:46:20,866 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 6210 ms
+2023-01-04 11:46:21,417 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-04 11:46:21,570 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.11.Final
+2023-01-04 11:46:22,177 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-04 11:46:22,488 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-04 11:46:22,930 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-04 11:46:23,030 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-01-04 11:46:25,439 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-04 11:46:25,453 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:46:28,556 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-04 11:46:29,825 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:46:29,868 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8083 (http) with context path '/api/v2/universidad'
+2023-01-04 11:46:31,599 INFO org.springframework.boot.StartupInfoLogger [main] Started UniviersidadBackendApplication in 18.154 seconds (JVM running for 19.909)
+2023-01-04 11:48:22,305 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-04 11:48:22,306 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-01-04 11:48:22,313 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Completed initialization in 6 ms
+2023-01-04 11:49:58,881 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] Optional[Persona{id=18, nombre='Jorge', apellido='Meza', dni='184416', direccion=null, fechaAlta=2022-11-23T11:16:19.216, fechaUltimaModificacion=2022-12-19T17:42:00.958}	Profesor{sueldo=90000.00}]
+2023-01-04 11:49:58,882 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-10] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor
+2023-01-04 11:50:15,985 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] Optional.empty
+2023-01-04 11:50:38,527 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Init - obtener Carreras
+2023-01-04 11:50:38,598 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=3, nombre='Ingenieria Industrial', cantidadDeMaterias=55, cantidadAnios=5, fechaAlta=2022-10-16T22:29:13.012, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,599 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=4, nombre='Ingenieria en Alimentos', cantidadDeMaterias=53, cantidadAnios=5, fechaAlta=2022-10-16T22:29:13.017, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,600 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=6, nombre='Licenciatura en Sistemas', cantidadDeMaterias=40, cantidadAnios=4, fechaAlta=2022-10-16T22:29:13.027, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,600 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=7, nombre='Licenciatura en Turismo', cantidadDeMaterias=42, cantidadAnios=4, fechaAlta=2022-10-16T22:29:13.032, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,601 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=8, nombre='Licenciatura en Yoga', cantidadDeMaterias=25, cantidadAnios=3, fechaAlta=2022-10-16T22:29:13.035, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,602 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=9, nombre='Licenciatura en Recursos Humanos - RRHH', cantidadDeMaterias=33, cantidadAnios=3, fechaAlta=2022-10-16T22:29:13.037, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,603 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=11, nombre='Licenciatura en Arte', cantidadDeMaterias=55, cantidadAnios=6, fechaAlta=2022-11-17T15:39:58.485, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,603 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=5, nombre='Ingenieria Electronica', cantidadDeMaterias=47, cantidadAnios=5, fechaAlta=2022-10-16T22:29:13.022, fechaUltimaModificacion=2022-11-30T15:18:12.471}
+2023-01-04 11:50:38,603 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=12, nombre='Ingenieria en Petroleo', cantidadDeMaterias=60, cantidadAnios=5, fechaAlta=2022-11-24T12:28:36.068, fechaUltimaModificacion=2022-12-05T10:42:09.094}
+2023-01-04 11:50:38,604 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=14, nombre='Ing. en Masa', cantidadDeMaterias=35, cantidadAnios=5, fechaAlta=2022-12-05T10:54:16.232, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,604 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=2, nombre='Ingenieria en Sistemas', cantidadDeMaterias=55, cantidadAnios=5, fechaAlta=2022-10-16T22:29:12.824, fechaUltimaModificacion=2022-12-16T15:38:20.208}
+2023-01-04 11:50:38,604 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=18, nombre='Lic en Alimento', cantidadDeMaterias=null, cantidadAnios=null, fechaAlta=2022-12-29T15:58:16.270, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,604 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=22, nombre='Lic en Ropa', cantidadDeMaterias=null, cantidadAnios=null, fechaAlta=2022-12-29T16:04:56.327, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,605 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=23, nombre='Ingenieria Electromecanica', cantidadDeMaterias=null, cantidadAnios=null, fechaAlta=2022-12-29T16:12:49.791, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,605 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Carrera{id=24, nombre='Ingenieria En MAsa', cantidadDeMaterias=35, cantidadAnios=5, fechaAlta=2022-12-29T16:24:32.735, fechaUltimaModificacion=null}
+2023-01-04 11:50:38,606 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.CarreraDtoController [http-nio-8083-exec-3] Out - obtener Carreras
+2023-01-04 11:52:12,915 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:52:12,923 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-04 11:52:12,956 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-04 11:52:24,683 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2023-01-04 11:52:24,774 INFO org.springframework.boot.StartupInfoLogger [main] Starting UniviersidadBackendApplication using Java 1.8.0_332 on DESKTOP-3RTNGS2 with PID 13952 (C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend\target\classes started by Besysoft in C:\Users\Besysoft\Documents\Capacitación General\Curso de Spring boot en simple pasos\universidad-backend)
+2023-01-04 11:52:24,777 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-04 11:52:27,954 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-04 11:52:28,218 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 238 ms. Found 6 JPA repository interfaces.
+2023-01-04 11:52:30,604 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8083 (http)
+2023-01-04 11:52:30,633 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:52:30,635 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-04 11:52:30,636 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-01-04 11:52:31,035 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-04 11:52:31,036 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 6073 ms
+2023-01-04 11:52:31,507 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-04 11:52:31,671 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.11.Final
+2023-01-04 11:52:32,121 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-04 11:52:32,458 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-04 11:52:32,922 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-04 11:52:32,985 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-01-04 11:52:34,915 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-04 11:52:34,933 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-04 11:52:37,650 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-04 11:52:38,786 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8083"]
+2023-01-04 11:52:38,838 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8083 (http) with context path '/api/v2/universidad'
+2023-01-04 11:52:40,206 INFO org.springframework.boot.StartupInfoLogger [main] Started UniviersidadBackendApplication in 16.409 seconds (JVM running for 17.979)
+2023-01-04 11:53:23,087 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-04 11:53:23,089 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-01-04 11:53:23,095 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Completed initialization in 4 ms
+2023-01-04 12:08:29,664 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] Ortiz
+2023-01-04 12:08:29,697 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] CANTIDAD DE PERSONAS ENCONTRADAS: 0
+2023-01-04 12:08:29,698 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-1] Is Empty: true
+2023-01-04 12:08:47,075 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] Optional[Persona{id=116, nombre='Jorge', apellido='Ramirez', dni='78985689', direccion=Direccion{calle='string', numero='string', codigoPostal='string', departamento='string', piso='string', localidad='string'}, fechaAlta=2023-01-04T11:35:18.060, fechaUltimaModificacion=2023-01-04T11:49:25.612}	Profesor{sueldo=100000.00}]
+2023-01-04 12:08:47,076 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-2] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor
+2023-01-04 12:09:03,959 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] Ramirez
+2023-01-04 12:09:03,967 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] CANTIDAD DE PERSONAS ENCONTRADAS: 1
+2023-01-04 12:09:03,968 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] Is Empty: false
+2023-01-04 12:09:03,968 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] Instanceof: class com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.ProfesorDAOImpl$$EnhancerBySpringCGLIB$$e8378a1a
+2023-01-04 12:09:03,969 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-3] entro en Persona
+2023-01-04 12:09:58,881 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-6] Optional[Persona{id=116, nombre='Jorge', apellido='Ramirez', dni='78985689', direccion=Direccion{calle='string', numero='string', codigoPostal='string', departamento='string', piso='string', localidad='string'}, fechaAlta=2023-01-04T11:35:18.060, fechaUltimaModificacion=2023-01-04T11:49:25.612}	Profesor{sueldo=100000.00}]
+2023-01-04 12:09:58,883 INFO com.springsimplespasos.universidad.universidadbackend.controlador.dto.PersonaDtoController [http-nio-8083-exec-6] class com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor
+2023-01-04 12:11:06,152 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-9] Servlet.service() for servlet [dispatcherServlet] in context with path [/api/v2/universidad] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno cannot be cast to com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor] with root cause
+java.lang.ClassCastException: com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Alumno cannot be cast to com.springsimplespasos.universidad.universidadbackend.modelo.entidades.Profesor
+	at com.springsimplespasos.universidad.universidadbackend.controlador.dto.ProfesorDtoController.asignarCarreraProfesor(ProfesorDtoController.java:153)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:920)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:684)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)

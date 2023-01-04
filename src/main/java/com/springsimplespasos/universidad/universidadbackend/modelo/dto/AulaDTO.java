@@ -2,7 +2,6 @@ package com.springsimplespasos.universidad.universidadbackend.modelo.dto;
 
 import com.springsimplespasos.universidad.universidadbackend.modelo.entidades.enumeradores.Pizarron;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
 
 
 @Data

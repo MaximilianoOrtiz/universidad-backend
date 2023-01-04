@@ -9,6 +9,7 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapst
 import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapstruct.CarreraMapperMS;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.CarreraDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/alumnos")
 @ConditionalOnProperty(prefix = "app", name = "controller.enable-dto", havingValue = "true")
+@Api(value = "Acciones relacionadas con los aLumnos", tags = "Acciones de alumnos")
 public class AlumnoDtoController extends PersonaDtoController{
 
     private final CarreraDAO carreraDAO;
@@ -86,8 +88,12 @@ public class AlumnoDtoController extends PersonaDtoController{
 //        return ResponseEntity.ok(mensaje);
 //    }
 
+    @ApiOperation(value = "Actualizar alumno")
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @Valid @RequestBody PersonaDTO alumno, BindingResult result){
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
+    public ResponseEntity<?> actualizarAlumno(@PathVariable @ApiParam("id del alumno") Integer id, @ApiParam("Alumno actualizado") @Valid @RequestBody PersonaDTO alumno, BindingResult result){
         Map<String,Object> mensaje = new HashMap<>();
         Map<String, Object> validaciones = new HashMap<>();
         if (result.hasErrors()){
@@ -112,9 +118,12 @@ public class AlumnoDtoController extends PersonaDtoController{
         return ResponseEntity.ok(mensaje);
     }
 
-
+    @ApiOperation(value = "Asignar carrera a aulumno")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @PutMapping("/{idAlumno}/carrera/{idCarrera}")
-    public ResponseEntity<?> asignarCarreraAlumno(@PathVariable Integer idAlumno,@PathVariable Integer idCarrera){
+    public ResponseEntity<?> asignarCarreraAlumno(@PathVariable @ApiParam(value = "Id del Alumno") Integer idAlumno,@PathVariable @ApiParam(value = "id de la carrera") Integer idCarrera){
         Map<String,Object> mensaje = new HashMap<>();
         Optional<Persona> oAlumno = service.findById(idAlumno);
         if (!oAlumno.isPresent()) {

@@ -12,6 +12,7 @@ import com.springsimplespasos.universidad.universidadbackend.modelo.mapper.mapst
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PabellonDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -29,6 +30,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/empleados")
 @ConditionalOnProperty(prefix = "app", name = "controller.enable-dto", havingValue = "true")
+@Api(value = "Acciones relacionadas con empleados", tags = "Acciones sobre Empleados") // anotaciones para swagger, costumizando el titulo del controlador
 public class EmpleadoDtoController extends PersonaDtoController{
 
     @Autowired
@@ -41,8 +43,12 @@ public class EmpleadoDtoController extends PersonaDtoController{
         System.out.println("entro en empleados");
     }
 
+    @ApiOperation(value = "Buscar por tipo de empleado")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @GetMapping(value = "/tipo/{tipoEmpleado}")
-    public ResponseEntity<?> findEmpleadoByTipoEmpleado(@PathVariable(required = false) String tipoEmpleado){
+    public ResponseEntity<?> findEmpleadoByTipoEmpleado(@PathVariable(required = false) @ApiParam(value = "tipo de empleado", example = "ADMINISTRATIVO") String tipoEmpleado){
         Map<String, Object> mensaje = new HashMap<>();
         TipoEmpleado cTipoEmpleado = EnumeradorConverterGeneric.getEnumFromString(TipoEmpleado.class, tipoEmpleado);
         List<Persona> empleadoByTipoEmpleado = (List<Persona>) ((EmpeladoDAO) service).findEmpleadoByTipoEmpleado((cTipoEmpleado));
@@ -57,8 +63,13 @@ public class EmpleadoDtoController extends PersonaDtoController{
         return  ResponseEntity.ok(mensaje);
     }
 
+
+    @ApiOperation(value = "Modificar  empleado")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @PutMapping("{id}")
-    public ResponseEntity<?> updateEmpleado(@PathVariable Integer id, @Valid @RequestBody EmpleadoDTO empleado, BindingResult result){
+    public ResponseEntity<?> updateEmpleado(@PathVariable @ApiParam(value = "codigo del empleado") Integer id, @Valid @RequestBody @ApiParam(value = "Datos de empleados") EmpleadoDTO empleado, BindingResult result){
         Map<String, Object> mensaje = new HashMap<>();
         Map<String, Object> validaciones = new HashMap<>();
         if(result.hasErrors()){
@@ -86,8 +97,12 @@ public class EmpleadoDtoController extends PersonaDtoController{
         return  ResponseEntity.badRequest().body(mensaje);
     }
 
+    @ApiOperation(value = "Relacionar empleado con pabellon")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @PutMapping("/{idEmpleado}/pabellon/{idPabellon}")
-    public ResponseEntity<?> relacionEmpleadoConPabellon(@PathVariable Integer idEmpleado,@PathVariable Integer idPabellon){
+    public ResponseEntity<?> relacionEmpleadoConPabellon(@PathVariable @ApiParam(value = "Codigo del empleado") Integer idEmpleado,@PathVariable @ApiParam(value = "Codigo del pabellon") Integer idPabellon){
         Map<String, Object> mensaje = new HashMap<>();
         Optional<Persona> oEmpleado = service.findById(idEmpleado);
         if (!oEmpleado.isPresent()){

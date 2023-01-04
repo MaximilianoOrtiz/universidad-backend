@@ -15,17 +15,21 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.PersonaDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
+import com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.AlumnoDAOImpl;
+import com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.EmpleadoDAOImpl;
+import com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.PersonaDAOImpl;
+import com.springsimplespasos.universidad.universidadbackend.servicios.implementaciones.ProfesorDAOImpl;
+import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class PersonaDtoController extends GenericDtoController<Persona, PersonaDAO>{
 
     protected  final EmpleadoMapper empleadoMapper;
@@ -42,8 +46,12 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
         this.profesorMapper = profesorMapper;
     }
 
+    @ApiOperation(value = "Alta de persona")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @PostMapping
-    public ResponseEntity<?> altaPersona(@Valid @RequestBody PersonaDTO personaDTO , BindingResult result) {
+    public ResponseEntity<?> altaPersona(@Valid @RequestBody @ApiParam(value = "persona a dar de alta") PersonaDTO personaDTO , BindingResult result) {
         Persona personaEntidad = null; /* super.altaEntidad(persona);*/
         PersonaDTO dto = null;
         Map<String, Object> mensaje = new HashMap<>();
@@ -73,6 +81,10 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
         return ResponseEntity.ok(mensaje);
     }
 
+    @ApiOperation(value = "Obtener personas")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @GetMapping()
     public ResponseEntity<?> obtenerPersonas(){
         Map<String, Object> mensaje = new HashMap<>();
@@ -122,15 +134,21 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
 //    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> obtenerPersonaPorId(@PathVariable  Integer id) {
+    @ApiOperation(value = "Obtener persona por id")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
+    public ResponseEntity<?> obtenerPersonaPorId(@ApiParam(value = "codigo de la persona") @PathVariable  Integer id) {
         Map<String, Object> mensaje = new HashMap<>();
         Optional<Persona> oPersona = service.findById(id);
+        log.info(oPersona.toString());
         PersonaDTO dto = null;
         if (!oPersona.isPresent()) {
             mensaje.put("success", Boolean.FALSE);
-            mensaje.put("mensaje", String.format(" Alumno con id %d no encontrado", id));
+            mensaje.put("mensaje", String.format(" %s con id %d no encontrado", nombre_entidad ,id));
             return ResponseEntity.badRequest().body(mensaje);
         }
+        log.info(oPersona.get().getClass().toString());
         if (oPersona.get() instanceof Alumno) {
             dto = alumnoMapper.mapAlumno((Alumno) oPersona.get());
         }
@@ -159,9 +177,12 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
 //        return dtos;
 //    }
 
-
+    @ApiOperation(value = "Buscar persona por Nombre y Apellido")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @GetMapping("/nombre-apellido")
-    public ResponseEntity<?> buscarPersonaPorNombreYApellido(@RequestParam String nombre, @RequestParam String apellido){
+    public ResponseEntity<?> buscarPersonaPorNombreYApellido(@RequestParam @ApiParam(value = "Nombre de la persona") String nombre, @ApiParam(value = "Apellido de la persona")@RequestParam String apellido){
         Map<String, Object> mensaje = new HashMap<>();
         Optional<Persona> oPersona = service.buscarPorNombreYApellido(nombre, apellido);
         if (!oPersona.isPresent()){
@@ -183,8 +204,12 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
         return ResponseEntity.ok(mensaje);
     }
 
+    @ApiOperation(value = "Buscar persona por dni")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @GetMapping("/dni/{dni}")
-    public ResponseEntity<?> buscarPorDni (@PathVariable String dni){
+    public ResponseEntity<?> buscarPorDni (@PathVariable @ApiParam(value = "Dni de la persona") String dni){
         Map<String, Object> mensaje = new HashMap<>();
         Optional<Persona> personaEncontrada = service.buscarPorDni(dni);
         if(!personaEncontrada.isPresent()){
@@ -207,26 +232,72 @@ public class PersonaDtoController extends GenericDtoController<Persona, PersonaD
         return ResponseEntity.ok(mensaje);
     }
 
+
+    @ApiOperation(value = "Buscar persona por apellido")
+    @ApiResponses({
+            @ApiResponse( code = 200, message = "Ejecutado satisfactoriamente") // Costumizamos los codigos de retornos
+    })
     @GetMapping("/apellido/{apellido}")
-    public ResponseEntity<?> buscarPersonaPorApellido (@PathVariable() String apellido){
+    public ResponseEntity<?> buscarPersonaPorApellido (@PathVariable @ApiParam(value = "Apellido de la persona")  String apellido){
+        log.info(apellido);
         Map<String, Object> mensaje = new HashMap<>();
         List<Persona> personasEncontradas = (List<Persona>) service.buscarPersonaPorApellido(apellido);
+        List<Persona> personasFiltrados = new ArrayList<>();
+
+        log.info("CANTIDAD DE PERSONAS ENCONTRADAS: " + personasEncontradas.size());
         if (personasEncontradas.isEmpty()){
+            log.info("Is Empty: " + Boolean.TRUE);
             //throw new BadRequestExecption(String.format("Las personas con apellido %s no existen", apellido));
             mensaje.put("success", Boolean.FALSE);
             mensaje.put("mensaje", String.format("Las personas con apellido %s no existen", apellido));
             return ResponseEntity.badRequest().body(mensaje);
         }
+        log.info("Is Empty: " + Boolean.FALSE);
         List<PersonaDTO> dtos = null;
-        if (service instanceof PersonaDAO){
-            dtos = personasEncontradas.stream().map(persona -> profesorMapper.mapProfesor((Profesor) persona)).collect(Collectors.toList());
-        } else if (service instanceof AlumnoDAO){
-            dtos = personasEncontradas.stream().map(persona -> alumnoMapper.mapAlumno((Alumno) persona)).collect(Collectors.toList());
-        }
-        else if (service instanceof EmpleadoDTO){
-            dtos = personasEncontradas.stream().map(persona -> empleadoMapper.mapEmpleado((Empleado) persona)).collect(Collectors.toList());
-        }
+        log.info("Instanceof: " + service.getClass());
 
+        if (service instanceof ProfesorDAOImpl){
+            log.info("entro en Persona");
+            for (Persona persona: personasEncontradas){
+                if (persona instanceof Profesor){
+                    personasFiltrados.add(persona);
+                }
+            }
+            if (personasFiltrados.isEmpty()){
+                mensaje.put("success", Boolean.FALSE);
+                mensaje.put("mensaje", String.format("No se encontro %s con apellido %s", nombre_entidad ,apellido));
+                return ResponseEntity.badRequest().body(mensaje);
+            }
+            dtos = personasFiltrados.stream().map(persona -> profesorMapper.mapProfesor((Profesor) persona)).collect(Collectors.toList());
+        }
+        else if (service instanceof AlumnoDAOImpl){
+            log.info("entro en Alumno");
+            for (Persona persona: personasEncontradas){
+                if (persona instanceof Alumno){
+                    personasFiltrados.add(persona);
+                }
+            }
+            if (personasFiltrados.isEmpty()){
+                mensaje.put("success", Boolean.FALSE);
+                mensaje.put("mensaje", String.format("No se encontro %s con apellido %s", nombre_entidad ,apellido));
+                return ResponseEntity.badRequest().body(mensaje);
+            }
+            dtos = personasFiltrados.stream().map(persona -> alumnoMapper.mapAlumno((Alumno) persona)).collect(Collectors.toList());
+        }
+        else if (service instanceof EmpleadoDAOImpl){
+            log.info("entro en Empleado");
+            for (Persona persona: personasEncontradas){
+                if (persona instanceof Empleado){
+                    personasFiltrados.add(persona);
+                }
+            }
+            if (personasFiltrados.isEmpty()){
+                mensaje.put("success", Boolean.FALSE);
+                mensaje.put("mensaje", String.format("No se encontro %s con apellido %s", nombre_entidad ,apellido));
+                return ResponseEntity.badRequest().body(mensaje);
+            }
+            dtos = personasFiltrados.stream().map(persona -> empleadoMapper.mapEmpleado((Empleado) persona)).collect(Collectors.toList());
+        }
         mensaje.put("success", Boolean.TRUE);
         mensaje.put("datos", dtos);
         return ResponseEntity.ok(mensaje);

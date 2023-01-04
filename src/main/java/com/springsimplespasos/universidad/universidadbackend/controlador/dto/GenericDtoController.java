@@ -4,7 +4,10 @@ import com.springsimplespasos.universidad.universidadbackend.servicios.contratos
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.EmpeladoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.GenericoDAO;
 import com.springsimplespasos.universidad.universidadbackend.servicios.contratos.ProfesorDAO;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
+import lombok.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,7 +48,8 @@ public class GenericDtoController <E, S extends GenericoDAO<E>>{
     }
 
     @DeleteMapping("/{id}")
-    public void deletedEntidad (@PathVariable Integer id){
+    @ApiOperation(value = "borrar")
+    public void deletedEntidad (@PathVariable @ApiParam(value = "Codigo ") Integer id){
         service.deleteId(id);
     }
 

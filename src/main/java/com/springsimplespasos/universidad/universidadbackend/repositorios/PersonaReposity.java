@@ -14,7 +14,7 @@ public interface PersonaReposity extends CrudRepository<Persona, Integer> {
     Optional<Persona> buscarPorNombreYApellido(String nombre, String apellido);
     @Query("select p from Persona p where p.dni = ?1")
     Optional<Persona> buscarPorDni (String din);
-    @Query("select p from Persona p where p.apellido like %?1%")
+    @Query("select p from Persona p where p.apellido = ?1")
     Iterable<Persona> buscarPersonaPorApellido (String apellido);
 
 }

@@ -1,0 +1,42 @@
+2022-12-27 12:27:43,024 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8083 (http)
+2022-12-27 12:27:43,123 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8083"]
+2022-12-27 12:27:43,125 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-27 12:27:43,128 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-27 12:27:44,586 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-27 12:27:44,588 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 17767 ms
+2022-12-27 12:27:46,816 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-27 12:27:47,379 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-27 12:27:49,089 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-27 12:27:49,960 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-27 12:27:51,370 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-27 12:27:51,775 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-12-27 12:28:00,066 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-27 12:28:00,089 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-27 12:28:10,105 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-27 12:28:15,205 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8083"]
+2022-12-27 12:28:15,597 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8083 (http) with context path '/api/v2/universidad'
+2022-12-27 12:28:15,700 INFO org.springframework.boot.StartupInfoLogger [main] Started UniviersidadBackendApplication in 52.102 seconds (JVM running for 56.622)
+2022-12-27 12:28:28,290 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8083-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-27 12:28:28,335 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-27 12:28:28,373 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8083-exec-1] Completed initialization in 25 ms
+2022-12-27 12:28:28,560 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-1] info log
+2022-12-27 12:28:28,564 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-1] waring log
+2022-12-27 12:28:28,565 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-1] error log
+2022-12-27 12:28:31,318 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-3] info log
+2022-12-27 12:28:31,320 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-3] waring log
+2022-12-27 12:28:31,321 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-3] error log
+2022-12-27 12:28:32,894 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-4] info log
+2022-12-27 12:28:32,934 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-4] waring log
+2022-12-27 12:28:32,935 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-4] error log
+2022-12-27 12:28:34,701 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-5] info log
+2022-12-27 12:28:34,704 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-5] waring log
+2022-12-27 12:28:34,705 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-5] error log
+2022-12-27 12:28:38,049 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-6] info log
+2022-12-27 12:28:38,134 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-6] waring log
+2022-12-27 12:28:38,135 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-6] error log
+2022-12-27 12:28:54,882 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-7] info log
+2022-12-27 12:28:54,883 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-7] waring log
+2022-12-27 12:28:54,883 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-7] error log
+2022-12-27 12:28:57,321 INFO com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-8] info log
+2022-12-27 12:28:57,335 WARN com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-8] waring log
+2022-12-27 12:28:57,497 ERROR com.springsimplespasos.universidad.universidadbackend.controlador.PrimerRestController [http-nio-8083-exec-8] error log
